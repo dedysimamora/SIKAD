@@ -1,7 +1,10 @@
 import React from 'react'
 import { Layout, Menu, Icon } from 'antd';
+import {Link} from "react-router-dom"
 import MainLogo from "../../Components/MainLogo"
 const {Sider} = Layout;
+const { SubMenu } = Menu;
+
 
 const BurgerMenu = (props) => {
     const {collapsed} = props
@@ -12,16 +15,46 @@ const BurgerMenu = (props) => {
             </div>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                 <Menu.Item key="1">
-                <Icon type="bar-chart" />
-                <span>Menu Utama</span>
+                    <Link to='/dashboard'>
+                        <Icon type="bar-chart" />
+                        <span>Menu Utama</span>
+                    </Link>
                 </Menu.Item>
-                <Menu.Item key="2">
-                <Icon type="database" />
-                <span>Arsip</span>
-                </Menu.Item>
+                <SubMenu
+                    key="2"
+                    title={
+                        <Link to='/arsip'>
+                            <span>
+                                <Icon type="database" />
+                                <span>Arsip</span>
+                            </span>
+                        </Link>
+                    }
+                >
+                    <Menu.Item key="5">
+                        <Link to='/arsip/dokumen'>
+                            <Icon type="file-text" />
+                            <span>Arsip Dokumen</span>
+                        </Link>
+                    </Menu.Item>
+                    <Menu.Item key="6">
+                        <Link to='/arsip/foto'>
+                            <Icon type="picture" />
+                            <span>Arsip Foto</span>
+                        </Link>
+                    </Menu.Item>
+                    <Menu.Item key="7">
+                        <Link to='/arsip/video'>
+                            <Icon type="play-square" />
+                            <span>Arsip Video</span>
+                        </Link>
+                    </Menu.Item>
+                </SubMenu>
                 <Menu.Item key="3">
-                <Icon type="user" />
-                <span>Profile</span>
+                    <Link to='/profile'>
+                        <Icon type="user" />
+                        <span>Profile</span>
+                    </Link>
                 </Menu.Item>
             </Menu>
         </Sider>

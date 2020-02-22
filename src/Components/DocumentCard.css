@@ -1,0 +1,17 @@
+.ant-card-bordered {
+    border-radius: 10px;
+    border: 2px solid #e8e8e8;
+}
+
+.DocumentCardContainer {
+    margin-top: 10px;
+}
+
+.account-balance{
+    font-size: 40px;
+    color:'red'
+}
+
+.account-balance span {
+    color: 'red'
+}
