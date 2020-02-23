@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Layout } from 'antd';
 import BurgerMenu from "./BasicLayoutComponents/BurgerMenu";
 import GlobalHeader from "./BasicLayoutComponents/GlobalHeader";
 import Dashboard from "../Containers/Dashboard"
 import Arsip from "../Containers/Arsip"
 import Profile from "../Containers/Profile"
+import GetWindowSize from "../Commons/GetWindowSize"
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import "./BasicLayout.css"
 const { Content } = Layout;
@@ -12,6 +13,18 @@ const { Content } = Layout;
 
 const BasicLayout = () => {
     const [collapsed, setCollapsed] = useState(false)
+    const [isMobile, setIsMobile] = useState(false)
+    const { width } = GetWindowSize();
+
+
+    useEffect(() => {
+        if(width <= 600) {
+            setIsMobile(true)
+            setCollapsed(true)
+        }
+    }, [width])
+
+
     const toogle = () => {
         setCollapsed(!collapsed)
     }
@@ -29,15 +42,15 @@ const BasicLayout = () => {
                         margin: '24px 16px',
                         padding: 24,
                         background: '#fff',
-                        minHeight: 280,
+                        minHeight: 500,
                         }}
                     >
                         
                         <Switch>
-                            <Route path="/dashboard" exact component={Dashboard} />
-                            <Route path="/profile" exact component={Profile} />
-                            <Route path="/arsip" exact component={Arsip} />
-                            <Route path="/arsip/:type" exact component={Arsip} />
+                    <Route path="/dashboard" exact render={(props) => <Dashboard {...props} isMobile={isMobile}/>} />
+                            <Route path="/profile" exact render={(props) => <Profile {...props} isMobile={isMobile}/>} />
+                            <Route path="/arsip" exact render={(props) => <Arsip {...props} isMobile={isMobile}/>} />
+                            <Route path="/arsip/:type" exact  render={(props) => <Arsip {...props} isMobile={isMobile}/>} />
                         </Switch>
 
                     </Content>

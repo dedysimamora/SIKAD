@@ -9,7 +9,7 @@ const { SubMenu } = Menu;
 const BurgerMenu = (props) => {
     const {collapsed} = props
     return (
-        <Sider trigger={null} collapsible collapsed={collapsed} width={225} breakpoint={'xs'}>
+        <Sider style={{zIndex:1000}} trigger={null} collapsible collapsed={collapsed} width={225} breakpoint={'xs'}>
             <div className="logo">
                 <MainLogo collapsed={collapsed} />
             </div>

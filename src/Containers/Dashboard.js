@@ -5,9 +5,9 @@ import {
     BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   } from 'recharts';
 
-const Dashboard = () => {
-
-
+const Dashboard = (props) => {
+  console.log(props.isMobile,"<<<<<<<<<");
+  
     const data = [
         {
           name: 'Dokumen', uv: 4000, amt: 2400,
@@ -19,9 +19,6 @@ const Dashboard = () => {
           name: 'Video', uv: 2000, amt: 2290,
         }
       ];
-
-
-
 
     return (
         <div>
@@ -35,6 +32,7 @@ const Dashboard = () => {
             <Col xs={24} sm={24} md={8} lg={8}>
                 <DocumentCard sortData={"Video"} sortColor={'#FCD42B'} />
             </Col>
+            
         </Row>
         <Row>
             <Col span={24}>
