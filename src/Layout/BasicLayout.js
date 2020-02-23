@@ -37,7 +37,8 @@ const BasicLayout = () => {
                         collapsed={collapsed} 
                         toogle={toogle}
                     />
-                    <Content
+                    {
+                        isMobile && !collapsed ? null : (<Content
                         style={{
                         margin: '24px 16px',
                         padding: 24,
@@ -53,7 +54,8 @@ const BasicLayout = () => {
                             <Route path="/arsip/:type" exact  render={(props) => <Arsip {...props} isMobile={isMobile}/>} />
                         </Switch>
 
-                    </Content>
+                    </Content>)
+                    }
                 </Layout>
             </Router>
        </Layout>

@@ -56,20 +56,20 @@ const DocumentCard = (props) => {
               fill={fill}
             />
             <text style={{fontSize:'12px', fontWeight:500}} x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>
-            <text style={{fontSize:'40px', fontWeight:700}} width={70} x={innerRadius + 135} y={innerRadius + 40} textAnchor={textAnchor} fill={fill}>{Percentage}</text>
-            <text x={innerRadius + 140} y={innerRadius + 60} textAnchor={textAnchor} fill={fill}>Total</text>
-            <text x={innerRadius + 173} y={innerRadius + 60} textAnchor={textAnchor} fill={fill}>{TotalArsip}</text>
+            <text style={{fontSize:'55px', fontWeight:700}} width={110} x={innerRadius + 150} y={innerRadius + 25} textAnchor={textAnchor} fill={fill}>{Percentage}</text>
+            <text x={innerRadius + 150} y={innerRadius + 45} textAnchor={textAnchor} fill={fill}>Total</text>
+            <text x={innerRadius + 185} y={innerRadius + 45} textAnchor={textAnchor} fill={fill}>{TotalArsip}</text>
           </g>
         );
       };
 
     return (
         <Card className={"DocumentCardContainer"} bordered={true}>
-               <PieChart  width={340} height={150}>
+               <PieChart  width={340} height={120}>
                     <Pie
                         data={data}
                         cx={70}
-                        cy={70}
+                        cy={55}
                         activeIndex={0}
                         activeShape={renderActiveShape}
                         innerRadius={40}
