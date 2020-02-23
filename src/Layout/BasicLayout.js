@@ -13,13 +13,11 @@ const { Content } = Layout;
 
 const BasicLayout = () => {
     const [collapsed, setCollapsed] = useState(false)
-    const [isMobile, setIsMobile] = useState(false)
     const { width } = GetWindowSize();
 
 
     useEffect(() => {
         if(width <= 600) {
-            setIsMobile(true)
             setCollapsed(true)
         }
     }, [width])
@@ -38,7 +36,7 @@ const BasicLayout = () => {
                         toogle={toogle}
                     />
                     {
-                        isMobile && !collapsed ? null : (<Content
+                        width <= 600 && !collapsed ? null : (<Content
                         style={{
                         margin: '24px 16px',
                         padding: 24,
@@ -48,10 +46,10 @@ const BasicLayout = () => {
                     >
                         
                         <Switch>
-                    <Route path="/dashboard" exact render={(props) => <Dashboard {...props} isMobile={isMobile}/>} />
-                            <Route path="/profile" exact render={(props) => <Profile {...props} isMobile={isMobile}/>} />
-                            <Route path="/arsip" exact render={(props) => <Arsip {...props} isMobile={isMobile}/>} />
-                            <Route path="/arsip/:type" exact  render={(props) => <Arsip {...props} isMobile={isMobile}/>} />
+                    <Route path="/dashboard" exact component={Dashboard} />
+                            <Route path="/profile" exact component={Profile}  />
+                            <Route path="/arsip" exact component={Arsip}  />
+                            <Route path="/arsip/:type" exact  component={Arsip} />
                         </Switch>
 
                     </Content>)

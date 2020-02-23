@@ -6,7 +6,6 @@ import {
   } from 'recharts';
 
 const Dashboard = (props) => {
-  console.log(props.isMobile,"<<<<<<<<<");
   
     const data = [
         {
@@ -24,13 +23,13 @@ const Dashboard = (props) => {
         <div>
             <Row gutter={16}>
             <Col  xs={24} sm={24} md={8} lg={8}>
-                <DocumentCard sortData={"Dokumen"} sortColor={'#EE682A'} />
+                <DocumentCard sortData={"Dokumen"} sortColor={'#EE682A'}  isMobile={props.isMobile}/>
             </Col>
             <Col xs={24} sm={24} md={8} lg={8}>
-                <DocumentCard sortData={"Foto"} sortColor={'#291B4F'} />
+                <DocumentCard sortData={"Foto"} sortColor={'#291B4F'}  isMobile={props.isMobile}/>
             </Col>
             <Col xs={24} sm={24} md={8} lg={8}>
-                <DocumentCard sortData={"Video"} sortColor={'#FCD42B'} />
+                <DocumentCard sortData={"Video"} sortColor={'#FCD42B'}  isMobile={props.isMobile}/>
             </Col>
             
         </Row>

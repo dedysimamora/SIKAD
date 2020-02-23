@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Card} from 'antd'
 import { useCountUp } from 'react-countup';
 import {PieChart, Pie, Sector, Cell } from 'recharts';
@@ -11,8 +11,10 @@ const CountNumber = (props) => {
   return countUp
 };
 
-const DocumentCard = (props) => {
 
+
+const DocumentCard = (props) => {
+    const isMobile = window.innerWidth <= 600
     const data = [
         { name: 'Dokumen', value: 100 },
         { name: 'Foto', value: 300 },
@@ -24,6 +26,7 @@ const DocumentCard = (props) => {
 
 
     const renderActiveShape = (props) => {
+      
       const RADIAN = Math.PI / 180;
       const {
         cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle,
@@ -55,10 +58,25 @@ const DocumentCard = (props) => {
               endAngle={endAngle}
               fill={fill}
             />
-            <text style={{fontSize:'12px', fontWeight:500}} x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>
-            <text style={{fontSize:'55px', fontWeight:700}} width={110} x={innerRadius + 150} y={innerRadius + 25} textAnchor={textAnchor} fill={fill}>{Percentage}</text>
-            <text x={innerRadius + 150} y={innerRadius + 45} textAnchor={textAnchor} fill={fill}>Total</text>
-            <text x={innerRadius + 185} y={innerRadius + 45} textAnchor={textAnchor} fill={fill}>{TotalArsip}</text>
+
+            {
+              isMobile ? (
+                <React.Fragment>
+                <text style={{fontSize:'9px', fontWeight:500}} x={cx} y={cy + 3} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>
+                <text style={{fontSize:'9px', fontWeight:700}}  x={cx - 8 } y={cy - 3} textAnchor={textAnchor} fill={fill}>{Percentage}</text>
+                <text style={{fontSize:'14px', fontWeight:500}} x={innerRadius } y={innerRadius + 85} textAnchor={textAnchor} fill={fill}>Total</text>
+                <text style={{fontSize:'14px', fontWeight:500}} x={innerRadius + 35} y={innerRadius + 85} textAnchor={textAnchor} fill={fill}>{TotalArsip}</text>
+                </React.Fragment>
+              ) : 
+              (
+                <React.Fragment>
+                <text style={{fontSize:'12px', fontWeight:500}} x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>
+                <text style={{fontSize:'55px', fontWeight:700}} width={110} x={innerRadius + 150} y={innerRadius + 25} textAnchor={textAnchor} fill={fill}>{Percentage}</text>
+                <text x={innerRadius + 150} y={innerRadius + 45} textAnchor={textAnchor} fill={fill}>Total</text>
+                <text x={innerRadius + 185} y={innerRadius + 45} textAnchor={textAnchor} fill={fill}>{TotalArsip}</text>
+                </React.Fragment>
+              )
+            }
           </g>
         );
       };
@@ -69,11 +87,11 @@ const DocumentCard = (props) => {
                     <Pie
                         data={data}
                         cx={70}
-                        cy={55}
+                        cy={isMobile ? 40 : 55}
                         activeIndex={0}
                         activeShape={renderActiveShape}
-                        innerRadius={40}
-                        outerRadius={60}
+                        innerRadius={isMobile ? 30 : 40}
+                        outerRadius={isMobile ? 45 : 60}
                         fill="#8884d8"
                         paddingAngle={5}
                         dataKey="value"
