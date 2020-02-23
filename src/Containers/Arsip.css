@@ -1,0 +1,50 @@
+
+  
+  thead tr th {
+    color : white;
+  
+  }
+  
+  .ant-table-body {
+     margin-left: 0px
+  }
+
+  .ant-table-column-title span {
+      color : white;
+      background-color: green !important;
+  }
+
+.arsip-table .ant-table-body {
+    margin : 0px !important
+}
+
+.arsip-table thead {
+    background-color: #001529;
+    margin-left: 0px;
+    color : white;
+    
+}
+
+.arsip-table thead span {
+    color : white;  
+}   
+
+.arsip-table thead  .ant-dropdown-trigger {
+    color : white;  
+}  
+
+
+
+.arsip-table thead svg {
+    color : white;
+
+}
+
+.arsip-table .anticon-filter:hover {
+    color : red;
+    
+}
+
+.arsip-table .ant- {
+    color: green !important;
+}

@@ -36,21 +36,23 @@ const BasicLayout = () => {
                         toogle={toogle}
                     />
                     {
-                        width <= 600 && !collapsed ? null : (<Content
+                        width <= 600 && !collapsed ? null : (
+                        
+                    <Content
                         style={{
-                        margin: '24px 16px',
-                        padding: 24,
-                        background: '#fff',
-                        minHeight: 500,
+                        margin: '24px 16px 0', overflow: 'initial' 
                         }}
                     >
+                        <div style={{ padding: 24, background: '#fff', textAlign: 'center' }}>
                         
                         <Switch>
-                    <Route path="/dashboard" exact component={Dashboard} />
+                            <Route path="/" exact component={Dashboard} />
                             <Route path="/profile" exact component={Profile}  />
                             <Route path="/arsip" exact component={Arsip}  />
                             <Route path="/arsip/:type" exact  component={Arsip} />
                         </Switch>
+
+                        </div>
 
                     </Content>)
                     }

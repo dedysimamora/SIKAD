@@ -15,7 +15,7 @@ const BurgerMenu = (props) => {
             </div>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                 <Menu.Item key="1">
-                    <Link to='/dashboard'>
+                    <Link to='/'>
                         <Icon type="bar-chart" />
                         <span>Menu Utama</span>
                     </Link>
@@ -32,21 +32,39 @@ const BurgerMenu = (props) => {
                     }
                 >
                     <Menu.Item key="5">
-                        <Link to='/arsip/dokumen'>
+                        <Link to='/arsip/personal-file'>
                             <Icon type="file-text" />
-                            <span>Arsip Dokumen</span>
+                            <span>Personal File</span>
                         </Link>
                     </Menu.Item>
                     <Menu.Item key="6">
                         <Link to='/arsip/foto'>
                             <Icon type="picture" />
-                            <span>Arsip Foto</span>
+                            <span>Foto</span>
                         </Link>
                     </Menu.Item>
                     <Menu.Item key="7">
                         <Link to='/arsip/video'>
                             <Icon type="play-square" />
-                            <span>Arsip Video</span>
+                            <span>Video</span>
+                        </Link>
+                    </Menu.Item>
+                    <Menu.Item key="8">
+                        <Link to='/arsip/surat-masuk'>
+                            <Icon type="file-text" />
+                            <span>Surat Masuk</span>
+                        </Link>
+                    </Menu.Item>
+                    <Menu.Item key="9">
+                        <Link to='/arsip/surat-keluar'>
+                            <Icon type="picture" />
+                            <span>Surat Keluar</span>
+                        </Link>
+                    </Menu.Item>
+                    <Menu.Item key="10">
+                        <Link to='/arsip/kartografi'>
+                            <Icon type="play-square" />
+                            <span>Kartografi</span>
                         </Link>
                     </Menu.Item>
                 </SubMenu>

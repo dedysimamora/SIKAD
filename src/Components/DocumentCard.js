@@ -16,12 +16,15 @@ const CountNumber = (props) => {
 const DocumentCard = (props) => {
     const isMobile = window.innerWidth <= 600
     const data = [
-        { name: 'Dokumen', value: 100 },
-        { name: 'Foto', value: 300 },
-        { name: 'Video', value: 200 }
+        { name: 'Personal File', value: 125 },
+        { name: 'Foto', value: 278 },
+        { name: 'Video', value: 79 },
+        { name: 'Surat Masuk', value: 178 },
+        { name: 'Surat Keluar', value: 110 },
+        { name: 'Kartografi', value: 223 }
     ]
     data.sort(function(x,y){ return x.name == props.sortData ? -1 : y.name == props.sortData ? 1 : 0; });
-    const Color = ['#EE682A', '#291B4F', '#FCD42B'];
+    const Color = ['#0707FF', '#BF12C3', '#FF1C0B', '#FF8C1B', '#001529 ', '#22D800'];
     Color.sort(function(x,y){ return x == props.sortColor ? -1 : y == props.sortColor ? 1 : 0; });
 
 
@@ -32,14 +35,7 @@ const DocumentCard = (props) => {
         cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle,
         fill, payload, percent, value,
       } = props;
-      const sin = Math.sin(-RADIAN * midAngle);
       const cos = Math.cos(-RADIAN * midAngle);
-      const sx = cx + (outerRadius + 10) * cos;
-      const sy = cy + (outerRadius + 10) * sin;
-      const mx = cx + (outerRadius + 30) * cos;
-      const my = cy + (outerRadius + 30) * sin;
-      const ex = mx + (cos >= 0 ? 1 : -1) * 22;
-      const ey = my;
       const textAnchor = cos >= 0 ? 'start' : 'end';
       let Percentage = <CountNumber endNumber={(percent * 100).toFixed(2)} suffix=" %" />
       let TotalArsip = <CountNumber endNumber={value} suffix=" Arsip" />
@@ -64,16 +60,16 @@ const DocumentCard = (props) => {
                 <React.Fragment>
                 <text style={{fontSize:'9px', fontWeight:500}} x={cx} y={cy + 3} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>
                 <text style={{fontSize:'9px', fontWeight:700}}  x={cx - 8 } y={cy - 3} textAnchor={textAnchor} fill={fill}>{Percentage}</text>
-                <text style={{fontSize:'14px', fontWeight:500}} x={innerRadius } y={innerRadius + 85} textAnchor={textAnchor} fill={fill}>Total</text>
-                <text style={{fontSize:'14px', fontWeight:500}} x={innerRadius + 35} y={innerRadius + 85} textAnchor={textAnchor} fill={fill}>{TotalArsip}</text>
+                <text style={{fontSize:'14px', fontWeight:500}} x={innerRadius -5 } y={innerRadius + 85} textAnchor={textAnchor} fill={fill}>Total</text>
+                <text style={{fontSize:'14px', fontWeight:500}} x={innerRadius + 30} y={innerRadius + 85} textAnchor={textAnchor} fill={fill}>{TotalArsip}</text>
                 </React.Fragment>
               ) : 
               (
                 <React.Fragment>
-                <text style={{fontSize:'12px', fontWeight:500}} x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>
-                <text style={{fontSize:'55px', fontWeight:700}} width={110} x={innerRadius + 150} y={innerRadius + 25} textAnchor={textAnchor} fill={fill}>{Percentage}</text>
-                <text x={innerRadius + 150} y={innerRadius + 45} textAnchor={textAnchor} fill={fill}>Total</text>
-                <text x={innerRadius + 185} y={innerRadius + 45} textAnchor={textAnchor} fill={fill}>{TotalArsip}</text>
+                <text style={{fontSize:'18px', fontWeight:500}} x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>
+                <text style={{fontSize:'55px', fontWeight:700}}  x={innerRadius + 130} y={innerRadius + 55} textAnchor={textAnchor} fill={fill}>{Percentage}</text>
+                <text x={innerRadius + 130} y={innerRadius + 77} textAnchor={textAnchor} fill={fill}>Total</text>
+                <text x={innerRadius + 165} y={innerRadius + 77} textAnchor={textAnchor} fill={fill}>{TotalArsip}</text>
                 </React.Fragment>
               )
             }
@@ -83,15 +79,15 @@ const DocumentCard = (props) => {
 
     return (
         <Card className={"DocumentCardContainer"} bordered={true}>
-               <PieChart  width={340} height={120}>
+               <PieChart  width={340} height={isMobile ? 125 : 200}>
                     <Pie
                         data={data}
-                        cx={70}
-                        cy={isMobile ? 40 : 55}
+                        cx={isMobile ? 68 : 75}
+                        cy={isMobile ? 40 : 95}
                         activeIndex={0}
                         activeShape={renderActiveShape}
-                        innerRadius={isMobile ? 30 : 40}
-                        outerRadius={isMobile ? 45 : 60}
+                        innerRadius={isMobile ? 30 : 60}
+                        outerRadius={isMobile ? 45 : 80}
                         fill="#8884d8"
                         paddingAngle={5}
                         dataKey="value"
