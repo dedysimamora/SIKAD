@@ -48,3 +48,9 @@
 .arsip-table .ant- {
     color: green !important;
 }
+
+.actionLogo {
+    margin-left: 15px;
+    color: #001529;
+    font-size: 20px;
+}

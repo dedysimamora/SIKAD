@@ -20,8 +20,15 @@ const BurgerMenu = (props) => {
                         <span>Menu Utama</span>
                     </Link>
                 </Menu.Item>
+
+                <Menu.Item key="2">
+                    <Link to='/arsip'>
+                        <Icon type="database" />
+                        <span>Arsip</span>
+                    </Link>
+                </Menu.Item>
                 <SubMenu
-                    key="2"
+                    key="23"
                     title={
                         <Link to='/arsip'>
                             <span>
