@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Table, Divider, Icon } from 'antd';
+import DataSample from "../Commons/dataSample"
 
 import './Arsip.css'
 
@@ -14,7 +15,7 @@ const columns = [
     {
       title : "Kode Klasifikasi",
       dataIndex : "kodeKlasifikasi",
-      width : "5%",
+      width : "7%",
       align : "center",
       render : (a) => a.toLocaleString('de-DE', {minimumFractionDigits: 0, maximumFractionDigits: 0}),
       sorter: (a, b) => a.kodeKlasifikasi - b.kodeKlasifikasi
@@ -22,25 +23,25 @@ const columns = [
     {
       title : "Indeks",
       dataIndex : "indeks",
-      width : "8%",
+      width : "10%",
       align : "center"
     },
     {
       title : "Uraian Informasi",
-      dataIndex : "uraianInformasi",
+      dataIndex : "tipeArsip",
       width : "20%",
       align : "center"
     },
     {
       title : "Tempat Simpan",
       dataIndex : "tempatSimpan",
-      width : "5%",
+      width : "7%",
       align : "center"
     },
     {
       title : "Tanggal Simpan",
       dataIndex : "tanggalSimpan",
-      width : "5%",
+      width : "7%",
       align : "center"
     },
     {
@@ -104,58 +105,50 @@ const columns = [
     // },
   ];
   
-  const data = [
-    {
-      "noDefiatif" : 1,
-      "kodeKlasifikasi" : 1555222000,
-      "indeks" : "SOSIALISASI",
-      "uraianInformasi" : "PESERTA MEMBERIKAN PERTANYAAN",
-      "tempatSimpan" : "KLATEN",
-      "tanggalSimpan" : "7/26/1999",
-    },
-    {
-      "noDefiatif" : 2,
-      "kodeKlasifikasi" : 333222,
-      "indeks" : "BUDIDAYA",
-      "uraianInformasi" : "SUASANA ARAPAT KOORDINASI",
-      "tempatSimpan" : "DADAP",
-      "tanggalSimpan" : "7/26/1999",
-    },
-    {
-      "noDefiatif" : 3,
-      "kodeKlasifikasi" : 777222,
-      "indeks" : "LOKAKARYA",
-      "uraianInformasi" : "PESERTA MELIHAT MATERI DI LAYAR PROYEKTOR",
-      "tempatSimpan" : "KUDUS",
-      "tanggalSimpan" : "7/26/1999",
-    },
-    {
-      "noDefiatif" : 4333,
-      "kodeKlasifikasi" : 111222,
-      "indeks" : "PEMBINAAN ORGANISASI",
-      "uraianInformasi" : "PAK SUTIOSO MENGECEK KANDUNGAN MINERAL",
-      "tempatSimpan" : "JAWA",
-      "tanggalSimpan" : "7/26/1999",
-    }
-]
+ 
 
 
 const Arsip = (props) => {
     const {match} = props
     const [pagination, setPagination] = useState({})
     const [loading, setLoading] = useState(false)
+    const [data, setData] = useState(null)
+
+    useEffect(() => {
+        if(match.params.type == undefined) {
+          setData(DataSample)
+        } else {
+          // arsipType = match.params.type.split("-").join("")
+          let filterData = DataSample.filter(data => data.tipeArsip.toLowerCase() == match.params.type.split("-").join(""))
+          setData(filterData)
+        }
+     
+    }, [match.params])
 
     
     function onChange(pagination, filters, sorter, extra) {
         console.log('params', pagination, filters, sorter, extra);
       }
-    return (
+    return data !== null && (
         <Table
             className="arsip-table"
             columns={columns} 
             dataSource={data} 
             onChange={onChange} 
             bordered={true}
+            pagination={
+                {
+                  // itemRender: customPagination,
+                  pageSize: 12,
+                  total: DataSample.length,
+                  // current: forPagination,
+                  style: {
+                      textAlign: 'center',
+                      float: 'none',
+                      marginTop: 47
+                  }
+              }
+            }
             size="small"
         />
     )

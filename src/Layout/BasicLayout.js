@@ -3,6 +3,7 @@ import { Layout } from 'antd';
 import BurgerMenu from "./BasicLayoutComponents/BurgerMenu";
 import GlobalHeader from "./BasicLayoutComponents/GlobalHeader";
 import Dashboard from "../Containers/Dashboard"
+import InputData from "../Containers/InputData"
 import Arsip from "../Containers/Arsip"
 import Profile from "../Containers/Profile"
 import GetWindowSize from "../Commons/GetWindowSize"
@@ -50,6 +51,7 @@ const BasicLayout = () => {
                             <Route path="/profile" exact component={Profile}  />
                             <Route path="/arsip" exact component={Arsip}  />
                             <Route path="/arsip/:type" exact  component={Arsip} />
+                            <Route path="/tambah-data" exact  component={InputData} />
                         </Switch>
 
                         </div>

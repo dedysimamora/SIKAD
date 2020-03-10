@@ -1,5 +1,5 @@
 import React from 'react'
-import DocumentCard from "../Components/DocumentCard"
+import DocumentCard from "../Components/AtomComponent/DocumentCard"
 import { Col, Row } from 'antd'
 
 const Dashboard = (props) => {

@@ -1,0 +1,14 @@
+.ant-input:focus {
+    -webkit-box-shadow: 0 0 0 0.1rem #780000  !important;
+    box-shadow: 0 0 0 0.1rem #780000  !important;
+}
+
+.has-error .ant-input:not([disabled]):focus  {
+    -webkit-box-shadow: 0 0 0 0.1rem #f5222d  !important;
+    box-shadow: 0 0 0 0.1rem #f5222d !important;
+}
+
+.ant-input-lg {
+    height: 50px;
+    border-radius: 10px;
+}

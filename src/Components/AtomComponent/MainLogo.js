@@ -1,6 +1,6 @@
 import React from 'react'
 import { Row, Col } from 'antd';
-import LogoDinas from "../Assets/Images/logo-dinas.png"
+import LogoDinas from "../../Assets/Images/logo-dinas.png"
 import "./MainLogo.css"
 
 const MainLogo = (props) => {
