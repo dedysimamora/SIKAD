@@ -5,6 +5,7 @@ import TextInput from "../../AtomComponent/Input/TextInput"
 import "./TempatSimpan.css"
 
 const TempatSimpan = (props) => {
+    const {formik} = props
     const onCasd = () => {
         console.log("asd");
         
@@ -13,18 +14,22 @@ const TempatSimpan = (props) => {
         <div className={"tempatSimpanContainer"}>
             <p className={"tempatSimpanLabel"}> Tempat Simpan : </p>
             <TextInput
-                        id="message"
-                        data-test-id="message"
-                        name="message"
-                        maxLength={12}
-                        placeholder={"Asdasd"}
-                        defaultValue={"Asdasd"}
-                        error={false}
-                        helperText={""}
-                        label={"Kode Klarifikasi"}
-                        onChange={onCasd}
-                        onFocus={onCasd}
-                    />
+                id="tempatSimpan"
+                data-test-id="tempatSimpan"
+                name="tempatSimpan"
+                maxLength={10}
+                placeholder={"Input Tempat Simpan"}
+                defaultValue={formik.values.tempatSimpan}
+                error={!!(formik.errors.tempatSimpan && formik.touched.tempatSimpan)}
+                label={"Kode Klarifikasi"}
+                onChange={formik.handleChange}
+                onFocus={formik.handleBlur}
+                helperText={
+                    formik.errors.tempatSimpan && formik.touched.tempatSimpan
+                        ? formik.errors.tempatSimpan
+                        : ""
+                }
+            />
         </div>
     )
 }

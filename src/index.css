@@ -14,5 +14,11 @@ code {
     monospace;
 }
 
+.has-error .ant-form-explain {
+  font-size: 12px;
+  margin-right: 10px;
+  text-align: right
+}
+
 
 

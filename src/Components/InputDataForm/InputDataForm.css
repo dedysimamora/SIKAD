@@ -1,6 +1,45 @@
 .SaveButton {
-    height: 50px;
+    height: 45px;
     background-color: #001529;
     color: white;
     border-radius: 8px
 }
+
+.ant-col {
+    margin-bottom: -15px;
+}
+
+
+.noDefiatif {
+    color: grey;
+    font-size: 12px;
+    text-align: left;
+    margin-left: 30px;
+}
+
+.TanggalSimpan {
+    color: grey;
+    font-size: 12px;
+    margin-bottom: 20px;
+    text-align: right;
+    margin-right: 30px;
+}
+
+.ukuranFoto {
+    color: grey;
+    font-size: 12px;
+    text-align: left;
+    margin-left: 95px;
+    margin-bottom: 0px;
+    margin-top: 10px
+}
+
+.kualitasFoto {
+    color: grey;
+    font-size: 12px;
+    text-align: right;
+    margin-right: 63px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+

@@ -5,7 +5,7 @@ import { Form, Input } from "antd";
 import "./TextInput.css";
 
 const TextInput = props => {
-    const { id, name, error, helperText, placeholder, maxLength, defaultValue, onChange, onFocus, label } = props;
+    const { id, name, error, helperText, placeholder, maxLength, defaultValue, onChange, onFocus } = props;
 
     return (
             <Form.Item
@@ -23,7 +23,6 @@ const TextInput = props => {
                     onChange={onChange}
                     onFocus={onFocus}
                     size={"large"}
-                    autoComplete={"off"}
                 />
             </Form.Item>
     );
