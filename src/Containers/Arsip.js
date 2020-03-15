@@ -7,10 +7,10 @@ import './Arsip.css'
 const columns = [
     {
       title : "No",
-      dataIndex : "noDefiatif",
+      dataIndex : "noDefinitif",
       width : "3%",
       align : "center",
-      sorter: (a, b) => a.noDefiatif - b.noDefiatif
+      sorter: (a, b) => a.noDefinitif - b.noDefinitif
     },
     {
       title : "Kode Klasifikasi",
@@ -155,22 +155,3 @@ const Arsip = (props) => {
 }
 
 export default Arsip
-
-
-
-
-
-
-// {
-//   "noDefiatif" : 1,
-//   "kodeKlasifikasi" : 555.222,
-//   "indeks" : "SOSIALISASI",
-//   "hakCipta" : "UMPEG",
-//   "uraianInformasi" : "SAMBUTAN",
-//   "tempatSimpan" : "KLATEN",
-//   "tanggalSimpan" : "7/26/1999",
-//   "kualitas" : "BAIK",
-//   "warna" : "BERWARNA",
-//   "ukuran" : "4R",
-//   "keterangan" : "ANONIM",
-// }

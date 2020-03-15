@@ -1,0 +1,18 @@
+.LokasiTempatContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.LokasiTempatLabel {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+#lebarFoto {
+    margin-left: 0px;
+    margin-top: -2px;
+    width: 50px;
+    padding-right: 0px
+}

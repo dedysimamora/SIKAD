@@ -7,17 +7,47 @@ import "./TipeArsip.css"
 const TipeArsip = (props) => {
     const {formik} = props
     const onSelect = (e) => {
-        console.log(e," <<<<< on select");
         formik.setFieldValue('tipeArsip', e)
         
     }
+
+    let suggestion = [
+        {
+            value : "personalFile",
+            label : "Personal File"
+        },
+        {
+            value : "foto",
+            label : "Foto"
+        },
+        {
+            value : "video",
+            label : "Video"
+        },
+        {
+            value : "suratMasuk",
+            label : "Surat Masuk"
+        },
+        {
+            value : "suratKeluar",
+            label : "Surat Keluar"
+        },
+        {
+            value : "kartografi",
+            label : "Kartografi"
+        }
+    ]
+
+    
     return (
         <div className={"TipeArsipContainer"}>
-            <p className={"TipeArsipLabel"}> Tipe Arsip : </p>
+            <p className={"inputLabelText"}> Tipe Arsip : </p>
             <Select 
                 placeholder={"Pilih Tipe Arsip"}
                 className={"selectInput"}
                 size={"large"}
+                width={'100%'}
+                suggestion={suggestion}
                 onSelect={onSelect}
                 error={!!(formik.errors.tipeArsip && formik.touched.tipeArsip)}
                 label={"Kode Klarifikasi"}

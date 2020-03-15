@@ -12,7 +12,7 @@ const TempatSimpan = (props) => {
     }
     return (
         <div className={"tempatSimpanContainer"}>
-            <p className={"tempatSimpanLabel"}> Tempat Simpan : </p>
+            <p className={"inputLabelText"}> Tempat Simpan : </p>
             <TextInput
                 id="tempatSimpan"
                 data-test-id="tempatSimpan"

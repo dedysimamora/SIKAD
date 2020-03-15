@@ -12,7 +12,7 @@ const LokasiTempat = (props) => {
     }
     return (
         <div className={"LokasiTempatContainer"}>
-            <p className={"LokasiTempatLabel"}> Lokasi Tempat : </p>
+            <p className={"inputLabelText"}> Lokasi Tempat : </p>
             <TextInput
                 id="lokasiTempat"
                 data-test-id="lokasiTempat"

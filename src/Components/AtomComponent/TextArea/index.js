@@ -6,6 +6,8 @@ import { Input, Form } from 'antd';
 import "./TextArea.css"
 
 const TextAreaInput = (props) => {
+    console.log(props.error, "XXX");
+    
     const {row, id, name, error, helperText, placeholder, maxLength, defaultValue, onChange, onFocus } = props
     const {TextArea} = Input
     return (

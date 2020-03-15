@@ -12,7 +12,7 @@ const Keterangan = (props) => {
     }
     return (
         <div className={"KeteranganContainer"}>
-            <p className={"KeteranganLabel"}> Keterangan : </p>
+            <p className={"inputLabelText"}> Keterangan : </p>
             <TextInput
                 id="keterangan"
                 data-test-id="keterangan"

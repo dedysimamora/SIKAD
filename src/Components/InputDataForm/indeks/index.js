@@ -9,7 +9,7 @@ const Indeks = (props) => {
     
     return (
         <div className={"IndeksContainer"}>
-            <p className={"IndeksLabel"}> Indeks : </p>
+            <p className={"inputLabelText"}> Indeks : </p>
             <TextArea 
                 row={2}
                 id="indeks"

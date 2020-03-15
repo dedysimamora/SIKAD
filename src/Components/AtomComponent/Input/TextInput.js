@@ -5,13 +5,13 @@ import { Form, Input } from "antd";
 import "./TextInput.css";
 
 const TextInput = props => {
-    const { id, name, error, helperText, placeholder, maxLength, defaultValue, onChange, onFocus } = props;
+    const { id, name, error, helperText, placeholder, maxLength, defaultValue, onChange, onFocus, width } = props;
 
     return (
             <Form.Item
             validateStatus={error ? "error" : "validating"}
             help={helperText.length !== 0 ? helperText : ""}
-            style={{ textAlign: "left", width: "95%" }}
+            style={{ textAlign: "left", width: width }}
             >
                 <Input
                     id={id}

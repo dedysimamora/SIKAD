@@ -4,3 +4,8 @@
     height: 45px;
     border-radius: 10px;
 }
+
+.ant-select-sm .ant-select-selection--single {
+    height: 35px;
+    border-radius: 5px;
+}

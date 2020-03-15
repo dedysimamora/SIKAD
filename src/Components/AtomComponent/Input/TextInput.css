@@ -12,3 +12,14 @@
     height: 45px;
     border-radius: 10px;
 }
+
+
+.ant-input-lg .ant-form-explain .show-help-enter .show-help-enter-active ::after {
+    color : green;
+    font-size: 50px
+}
+
+.ant-input-lg .ant-form-explain .show-help-leave .show-help-leave-active ::after {
+    color : blue;
+    font-size: 50px
+}

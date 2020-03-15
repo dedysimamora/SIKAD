@@ -1,6 +1,30 @@
 .photo > .ant-upload {
-    width: 450px;
-    height: 450px;
+    width: 475px;
+    height: 425px;
     margin-left: 75px;
     margin-top: 20px;
+  }
+
+
+  .ant-upload-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: #001529;
+
+  }
+
+  .uploadFotoIcon {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .deleteFotoButton {
+    position: absolute;
+    font-size: 9px;
+    margin-left: -65px;
+    margin-top: 5px;
+    width: 55px;
+    height: 30px;
+    padding-left: 0px;
+    padding-right: 0px;
   }

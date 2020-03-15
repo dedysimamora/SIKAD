@@ -2,16 +2,21 @@ import React, {useState, useEffect} from 'react'
 import { Button , Form, Row, Col, Upload, message  } from "antd";
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import moment from 'moment';
+import {storage} from  '../../Commons/FirebaseConfig'
 
 import TempatSimpan from "./tempatSimpan"
 import HakCipta from "./hakcipta"
 import Keterangan from "./keterangan"
-import KodeKlasifikasi from "./kodeKlasifikasi"
+import NoKlasifikasi from "./noKlasifikasi"
 import Indeks from "./indeks"
 import LokasiTempat from "./lokasiTempat"
 import UraianInformasi from "./uraianInformasi"
 import TipeArsip from "./tipeArsip"
 import Foto from "./foto"
+import PanjangFoto from "./panjangFoto"
+import LebarFoto from "./lebarFoto"
+import KualitasFoto from "./KualitasFoto"
+import TanggalSimpan from "./tanggalSimpan"
 // import Kualitas from "./kualitas"
 // import TanggalSimpan from "./tanggalSimpan"
 // import NoDefiatif from "./noDefiatif"
@@ -20,54 +25,64 @@ import Foto from "./foto"
 import "./InputDataForm.css"
 
 const InputDataForm = (props) => {
-    const {formik} = props
-    const [noDefiatif, setNoDefiatif] = useState(null)
+    
+    const {formik, setLoadingFunct} = props
+    const [noDefinitif, setNoDefinitif] = useState(null)
     const [tglSimpan, setTglSimpan] = useState(null)
     const [sizeFoto, setSizeFoto] = useState(null)
     const [fotoQuality, setFotoQuality] = useState(null)
 
-    useEffect(() => {
-        formik.setFieldValue('tanggalSimpan',moment(Date.now()).format('DD-MM-YYYY'))
-        formik.setFieldValue('noDefiatif', "128")
-    }, [])
-
-    const getImageSize = (data) => {
-        console.log(data, "<<<<<<<<<<<<<<<,, data");
-        if(data.width < 100 || data.height < 100){
-            setFotoQuality("Buruk")
-        } else if (data.width > 100 && data.width < 500) {
-            setFotoQuality("Sedang")
-        } else if(data.width > 100 || data.height > 100) {
-            setFotoQuality("Baik")
-        }
-
-        setSizeFoto(`${data.width} px X ${data.height} px - ${data.size} kb`)
-        
+    const handleSubmit = () => {
+        setLoadingFunct(true)
+        const uploadImage = storage.ref(`images/image-${noDefinitif}`).putString(formik.values.foto, 'data_url')
+            uploadImage.on(
+                "state_changed",
+                snapshoot => {},
+                error => {
+                    console.log(error);
+                    
+                },
+                () => {
+                    storage
+                        .ref("images")
+                        .child(`image-${noDefinitif}`)
+                        .getDownloadURL()
+                        .then( url => {
+                            formik.setFieldValue('foto', url)
+                            formik.handleSubmit()
+                        })
+                }
+            )
     }
 
-   
-
-    
+    useEffect(() => {
+        let d = new Date();
+        let n = d.getSeconds();
+        formik.setFieldValue('noDefinitif', n)
+    }, [])
+  
     return (
         <Form layout={"vertical"}>
-            <div style={{display:'flex', flexDirection:'row'}}>
+            <div style={{display:'flex', flexDirection:'row', flexWrap:'wrap'}}>
                 <div style={{width:'50%'}}>
                     <Row style={{marginBottom:'15px'}}>
                         <Col span={12}>
-                            <p className={"noDefiatif"}>No Defiatif : {formik.values.noDefiatif !== null ? formik.values.noDefiatif : "-"}</p>
-                        </Col>
-                        <Col span={12}>
-                            <p className={"TanggalSimpan"}>Tanggal Simpan : {formik.values.tanggalSimpan !== null ? formik.values.tanggalSimpan : "-"}</p>
+                            <p className={"noDefinitif"}>No Defiatif : {formik.values.noDefinitif !== null ? formik.values.noDefinitif : "-"}</p>
                         </Col>
                     </Row>
                     <Row>
-                        <Col span={12}>
-                            <KodeKlasifikasi  
+                        <Col span={8}>
+                            <NoKlasifikasi  
                                 formik={formik}
                             />
                         </Col>
-                        <Col span={12}>
-                            <TempatSimpan 
+                        <Col span={8}>
+                            <TanggalSimpan 
+                                formik={formik}
+                            />
+                        </Col>
+                        <Col span={8}>
+                            <TipeArsip 
                                 formik={formik}
                             />
                         </Col>
@@ -91,7 +106,7 @@ const InputDataForm = (props) => {
                             />
                         </Col>
                         <Col span={12}>
-                            <TipeArsip 
+                            <TempatSimpan 
                                 formik={formik}
                             />
                         </Col>
@@ -117,32 +132,50 @@ const InputDataForm = (props) => {
                         <Col span={24}>
                             <Foto 
                                 formik={formik}
-                                getImageSize={getImageSize}
                             />
                         </Col>
                     </Row>
-                    <Row style={{marginBottom:'-10px'}}>
-                        <Col  span={12}>
-                            <p className={"ukuranFoto"}>Ukuran Foto : {sizeFoto !== null ? sizeFoto : "-"}</p>
+                    <Row style={{marginBottom:'-10px', marginTop:'10px'}}>
+                        <Col span={4} offset={4}>
+                        <p style={{marginTop:'5px'}}>Ukuran Foto :</p>
                         </Col>
-                        <Col  span={12}>
-                            <p className={"kualitasFoto"}>Kualitas Foto : {fotoQuality !== null ? fotoQuality : "-"}</p>
+                        <Col  span={3} style={{flexDirection:'row'}}>
+                            <PanjangFoto 
+                                    formik={formik}
+                                />
+                        </Col>
+                        <Col  span={1} style={{flexDirection:'row'}}>
+                            <p style={{marginTop:'5px', marginLeft:'-40px'}}>Cm</p>
+                        </Col>
+                        <Col  span={1} style={{flexDirection:'row'}}>
+                            <p style={{marginTop:'5px', marginLeft:'-25px'}}>X</p>
+                        </Col>
+                        <Col  span={3}  style={{ display:'flex', flexDirection:'row'}}>
+                                <LebarFoto 
+                                    formik={formik}
+                                />
+                        </Col>
+                        <Col  span={1} style={{flexDirection:'row'}}>
+                            <p style={{marginTop:'5px', marginLeft:'-40px'}}>Cm</p>
+                        </Col>
+                        <Col  span={6}>
+                         <KualitasFoto formik={formik} />
                         </Col>
                         
                     </Row>
 
                 </div>
             </div>
-            <div style={{marginTop:'45px'}}>
+            <div style={{marginTop:'35px'}}>
                 <Row style={{display:'flex', flexDirection:'row', justifyContent:'center'}} >
                     <Col span={23}>
                         <Button 
                             block 
-                            onClick={formik.handleSubmit}
+                            onClick={handleSubmit}
                             className={"SaveButton"}
                             disabled={!formik.isValid}
                         >
-                            Primary
+                            Unggah Data
                         </Button>
                     </Col>
                 </Row>

@@ -20,5 +20,28 @@ code {
   text-align: right
 }
 
+.ant-modal-content{
+  border-radius: 8px;
+  background-color: #00000000;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.15);
+}
+
+.modalLoadingContainer{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 10px 20px;
+}
+
+
+
+.inputLabelText {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 5px;
+  color: #001529;
+}
+
 
 

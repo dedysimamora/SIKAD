@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import { Button , Form, Row, Col, Upload, message  } from "antd";
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import {  Upload, Progress,  Button, Tooltip } from "antd";
+import { CloseOutlined , PlusOutlined } from '@ant-design/icons';
+import { SearchOutlined } from '@ant-design/icons';
+
 
 import "./Foto.css"
 
@@ -8,39 +10,39 @@ const FotoUpload = (props) => {
     const {getImageSize} = props
     const [loading, setLoading] = useState(false)
     const [imageUrl, setImageUrl] = useState(null)
+    const [progres, setProgres] = useState(0)
 
     const getBase64 = (img, callback) => {
         const reader = new FileReader();
         reader.addEventListener('load', () => {
-            let i = new Image()
-            i.onload = function(){
-                getImageSize({
-                    width : i.width,
-                    height : i.height,
-                    size : Math.round(img.size / 1024)
-                })
-            };
-            i.src = reader.result
-            
             callback(reader.result)
         });
         reader.readAsDataURL(img);
     }
-    
-    const beforeUpload = (file) => {
-        
-        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-        if (!isJpgOrPng) {
-            message.error('You can only upload JPG/PNG file!');
-        }
-        const isLt2M = file.size / 1024 / 1024 < 2;
-        if (!isLt2M) {
-            message.error('Image must smaller than 2MB!');
-        }
-        return isJpgOrPng && isLt2M;
+
+    const delteFoto = (e) => {
+        setImageUrl(null)
+        e.stopPropagation();
+        props.formik.setFieldValue('foto', "")
     }
 
+    const dummyRequest = ({ file, onSuccess }) => {
+        setTimeout(() => {
+          onSuccess("ok");
+        }, 0);
+      };
+    
+   
     const handleChange = info => {
+        if(info){
+            if(info.event){
+                if(info.event.percent){
+                    setProgres(Math.round(info.event.percent))
+                }
+            }
+        }
+        
+        
         if (info.file.status === 'uploading') {
           setLoading(true)
           return;
@@ -48,6 +50,8 @@ const FotoUpload = (props) => {
         if (info.file.status === 'done') {
           // Get this url from response in real world.
           getBase64(info.file.originFileObj, (imageUrl) => {
+              console.log(imageUrl, "<<<<<<<");
+            props.formik.setFieldValue('foto', imageUrl)
             setImageUrl(imageUrl)
             setLoading(false)
           }
@@ -68,17 +72,32 @@ const FotoUpload = (props) => {
             listType="picture-card"
             className="photo"
             showUploadList={false}
-            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-            beforeUpload={beforeUpload}
+            customRequest={dummyRequest}
             onChange={handleChange}
         >
             {
                 imageUrl ? 
-                    <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> 
+                    <div>
+                        <img src={imageUrl} alt="avatar" style={{ width:"89%", height:'89%' }} /> 
+                        <Button 
+                            type="dashed" 
+                            className={'deleteFotoButton'}
+                            onClick={delteFoto}
+                        >
+                            Hapus Foto
+                        </Button>
+                    </div>
+                    
                 : 
                 <div>
-                    {loading ? <LoadingOutlined /> : <PlusOutlined />}
-                    <div className="ant-upload-text">Upload</div>
+                    {loading ? 
+                        <Progress type="circle" percent={progres} /> : 
+                        <React.Fragment>
+                            <PlusOutlined className="uploadFotoIcon" /> 
+                            <div className="ant-upload-text">Unggah Foto</div>
+                        </React.Fragment>
+                    }
+                    
                 </div>
 
             }

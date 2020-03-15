@@ -9,13 +9,13 @@ const UraianInformasi = (props) => {
 
     return (
         <div className={"UraianInformasiContainer"}>
-            <p className={"UraianInformasiLabel"}> Uraian Informasi : </p>
+            <p className={"inputLabelText"}> Uraian Informasi : </p>
             <TextArea 
                 row={4}
                 id="uraianInformasi"
                 data-test-id="uraianInformasi"
                 name="uraianInformasi"
-                maxLength={50}
+                maxLength={100}
                 placeholder={"Input Uraian Informasi"}
                 defaultValue={formik.values.uraianInformasi}
                 error={!!(formik.errors.uraianInformasi && formik.touched.uraianInformasi)}

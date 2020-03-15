@@ -1,6 +1,6 @@
 const data = [
 	{
-		"noDefiatif": 1,
+		"noDefinitif": 1,
 		"kodeKlasifikasi": 92344,
 		"indeks": "SOSIALISASI",
 		"uraianInformasi": "PESERTA MEMBERIKAN PERTANYAAN ",
@@ -15,7 +15,7 @@ const data = [
 		"tipeArsip": "personalFile"
 	},
 	{
-		"noDefiatif": 2,
+		"noDefinitif": 2,
 		"kodeKlasifikasi": 239043,
 		"indeks": "PELEBARAN",
 		"uraianInformasi": "DUDONG SEDANG MANDI",
@@ -30,7 +30,7 @@ const data = [
 		"tipeArsip": "personalFile"
 	},
 	{
-		"noDefiatif": 3,
+		"noDefinitif": 3,
 		"kodeKlasifikasi": 333222,
 		"indeks": "BUDIDAYA",
 		"uraianInformasi": "SUASANA ARAPAT KOORDINASI",
@@ -45,7 +45,7 @@ const data = [
 		"tipeArsip": "foto"
 	},
 	{
-		"noDefiatif": 4,
+		"noDefinitif": 4,
 		"kodeKlasifikasi": 34475,
 		"indeks": "MAKLUMAN",
 		"uraianInformasi": "DAPUR MEMASAK IKAN",
@@ -60,7 +60,7 @@ const data = [
 		"tipeArsip": "foto"
 	},
 	{
-		"noDefiatif": 5,
+		"noDefinitif": 5,
 		"kodeKlasifikasi": 98789,
 		"indeks": "LOKAKARYA",
 		"uraianInformasi": "PESERTA MELIHAT MATERI DI LAYAR PROYEKTOR",
@@ -75,7 +75,7 @@ const data = [
 		"tipeArsip": "video"
 	},
 	{
-		"noDefiatif": 6,
+		"noDefinitif": 6,
 		"kodeKlasifikasi": 309452,
 		"indeks": "BERBUSANA",
 		"uraianInformasi": "KOMPUTER TUA JAMAN DULU",
@@ -90,7 +90,7 @@ const data = [
 		"tipeArsip": "video"
 	},
 	{
-		"noDefiatif": 7,
+		"noDefinitif": 7,
 		"kodeKlasifikasi": 111222,
 		"indeks": "PEMBINAAN ORGANISASI",
 		"uraianInformasi": "PAK SUTIOSO MENGECEK KANDUNGAN MINERAL",
@@ -105,7 +105,7 @@ const data = [
 		"tipeArsip": "suratMasuk"
 	},
 	{
-		"noDefiatif": 8,
+		"noDefinitif": 8,
 		"kodeKlasifikasi": 34034,
 		"indeks": "NYANYI DANGDUT",
 		"uraianInformasi": "PAK GURU MANDI DI KALI",
@@ -120,7 +120,7 @@ const data = [
 		"tipeArsip": "suratMasuk"
 	},
 	{
-		"noDefiatif": 9,
+		"noDefinitif": 9,
 		"kodeKlasifikasi": 67523,
 		"indeks": "PEMADAM KEBAKARAN ORGANISASI",
 		"uraianInformasi": "PAK SUTIOSO SIRAM API",
@@ -135,7 +135,7 @@ const data = [
 		"tipeArsip": "suratKeluar"
 	},
 	{
-		"noDefiatif": 10,
+		"noDefinitif": 10,
 		"kodeKlasifikasi": 292384,
 		"indeks": "PENDUKUNG DEMO",
 		"uraianInformasi": "MAHASISWA BERTERIAK",
@@ -150,7 +150,7 @@ const data = [
 		"tipeArsip": "suratKeluar"
 	},
 	{
-		"noDefiatif": 11,
+		"noDefinitif": 11,
 		"kodeKlasifikasi": 44213,
 		"indeks": "TANAMAN HANGUS",
 		"uraianInformasi": "DENGAN TANAMAN BISA KEBAKAR",
@@ -165,7 +165,7 @@ const data = [
 		"tipeArsip": "kartoGrafi"
 	},
 	{
-		"noDefiatif": 12,
+		"noDefinitif": 12,
 		"kodeKlasifikasi": 2342,
 		"indeks": "SABUN BERACUN",
 		"uraianInformasi": "MEYEBABKAN GATAL",

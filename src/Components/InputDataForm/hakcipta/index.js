@@ -12,7 +12,7 @@ const HakCipta = (props) => {
     }
     return (
         <div className={"HakCiptaContainer"}>
-            <p className={"HakCiptaLabel"}> Hak Cipta : </p>
+            <p className={"inputLabelText"}> Hak Cipta : </p>
             <TextInput
                 id="hakCipta"
                 data-test-id="hakCipta"
