@@ -2,15 +2,31 @@ import React, {useState, useEffect} from 'react'
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Modal, Button, Spin } from 'antd';
+import { useSelector, useDispatch } from "react-redux";
 import InputDataForm from "../Components/InputDataForm"
-import {storage} from  '../Commons/FirebaseConfig'
+import Firebase from  '../Commons/FirebaseConfig'
+import ModalLoading from "../Components/HelperComponent/ModalLoading"
+import ModalClick from "../Components/HelperComponent/ModalClick"
 
 const InputData = () => {
+    const dispatch = useDispatch();
     const [loading, setLoading] = useState(false)
-    let a = 128
+    const [modal, setModal] = useState({
+        visible : false,
+        title : "",
+        image : "",
+        mainButton : ""
+    })
 
     const setLoadingFunct = () => {
         setLoading(true)
+    }
+
+    const closeModal = () => {
+        setModal({
+            ...modal,
+            visible : false
+        })
     }
 
     const formik = useFormik({
@@ -28,7 +44,8 @@ const InputData = () => {
             noDefinitif: "",
             tanggalSimpan: "",
             panjangFoto: "",
-            lebarFoto : ""
+            lebarFoto : "",
+            kualitasFoto : ""
         },
         validationSchema: Yup.object({
             noKlasifikasi: Yup.string()
@@ -54,12 +71,37 @@ const InputData = () => {
             tanggalSimpan : Yup.string()
                 .required(" "),
             foto: Yup.string()
-            .required(" ")
+                .required(" "),
+            noDefinitif: Yup.string()
+                .required(" "),
+            kualitasFoto: Yup.boolean()
+                .required(" ")
         }),
-        onSubmit: (values) => {
+        onSubmit: (values, actions) => {
+            console.log(values, "<<<<<<<<<<<<<<<<<<<");
             
-            setLoading(false)
-            console.log(values, "<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+            let db = Firebase.firestore()
+            db.collection('arsip').add(values)
+            .then((snapshot) => {
+               (async () => {
+                await dispatch.arsip.getAllArsip();
+                await formik.resetForm()
+                await formik.setSubmitting(false)
+                await setLoading(false)
+                await setModal({
+                    visible : true,
+                    title : "Berhasil Menambahkan data Data",
+                    image : "success",
+                    mainButton : {
+                        title : 'Ok',
+                        onClick : () => {closeModal()}
+                    }
+                })
+                })()
+            })
+            .catch((err) => {
+                setLoading(false)
+            });
           }
     });
     
@@ -69,23 +111,17 @@ const InputData = () => {
             <InputDataForm
             formik={formik}
             setLoadingFunct={setLoadingFunct}
-        />
-        <Modal
-            visible={loading}
-            onOk={() => {console.log("ok") }}
-            onCancel={() => {console.log("yaaa")}}
-            zIndex={9999}
-            closable={false}
-            centered
-            footer={null}
-            transitionName={"fade"}
-            maskTransitionName={"fade"}
-        >
+            action={"inputData"}
+            />
 
-          <div className={"modalLoadingContainer"}>
-                <Spin tip="Loading..."></Spin>
-          </div>
-        </Modal>
+            <ModalClick 
+                title = {modal.title}
+                image = {modal.image} 
+                mainButton = {modal.mainButton} 
+                visible = {modal.visible}
+            />
+
+            <ModalLoading visible={loading} />
        </React.Fragment>
     )
 }

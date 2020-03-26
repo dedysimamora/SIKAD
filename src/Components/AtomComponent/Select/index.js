@@ -4,7 +4,7 @@ import { Select, Form } from 'antd';
 import "./Select.css"
 
 const SelectInput = (props) => {
-    const {className,size, placeholder, error, width, helperText, onSelect, suggestion } = props
+    const {className,size, placeholder, error, width, helperText, onSelect, suggestion, value } = props
     const { Option } = Select;
     return (
         <Form.Item
@@ -14,6 +14,7 @@ const SelectInput = (props) => {
         >
              <Select 
                 placeholder={placeholder}
+                value={value !== "" ? value : undefined}
                 className={className}
                 size={size}
                 error={error}

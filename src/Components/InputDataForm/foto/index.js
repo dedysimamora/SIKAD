@@ -7,10 +7,22 @@ import { SearchOutlined } from '@ant-design/icons';
 import "./Foto.css"
 
 const FotoUpload = (props) => {
-    const {getImageSize} = props
+    const isMobile = window.innerWidth <= 600
+    const {getImageSize, formik} = props
     const [loading, setLoading] = useState(false)
     const [imageUrl, setImageUrl] = useState(null)
     const [progres, setProgres] = useState(0)
+
+    useEffect(() => {
+        console.log(formik.values.foto, "<<<<<<<<<<<<<<<<<<<<<<<ll");
+        
+        if(formik.values.foto == ""){
+            setImageUrl(null)
+            formik.setFieldValue('foto', "")
+        }else {
+            setImageUrl(formik.values.foto)
+        }
+    }, [formik.values.foto])
 
     const getBase64 = (img, callback) => {
         const reader = new FileReader();
@@ -23,7 +35,7 @@ const FotoUpload = (props) => {
     const delteFoto = (e) => {
         setImageUrl(null)
         e.stopPropagation();
-        props.formik.setFieldValue('foto', "")
+        formik.setFieldValue('foto', "")
     }
 
     const dummyRequest = ({ file, onSuccess }) => {
@@ -50,9 +62,7 @@ const FotoUpload = (props) => {
         if (info.file.status === 'done') {
           // Get this url from response in real world.
           getBase64(info.file.originFileObj, (imageUrl) => {
-              console.log(imageUrl, "<<<<<<<");
-            props.formik.setFieldValue('foto', imageUrl)
-            setImageUrl(imageUrl)
+            formik.setFieldValue('foto', imageUrl)
             setLoading(false)
           }
             
@@ -70,7 +80,7 @@ const FotoUpload = (props) => {
         <Upload
             name="avatar"
             listType="picture-card"
-            className="photo"
+            className={isMobile ? "photoMobile" : "photo"}
             showUploadList={false}
             customRequest={dummyRequest}
             onChange={handleChange}

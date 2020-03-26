@@ -15,18 +15,19 @@ const CountNumber = (props) => {
 
 const DocumentCard = (props) => {
   const isMobile = window.innerWidth <= 600
-  let aa  = 0
-    const data = [
-        { name: 'Personal File', value: 125 },
-        { name: 'Foto', value: 278 },
-        { name: 'Video', value: 79 },
-        { name: 'Surat Masuk', value: 178 },
-        { name: 'Surat Keluar', value: 110 },
-        { name: 'Kartografi', value: 223 }
-    ]
+    let sortTipeARsip = props.allData.reduce((acc, element) => {
+      const [key, value] = Object.entries(element)[12];
+      if(acc[value] == undefined) {
+        acc[value] = 1
+      } else {
+        acc[value] = acc[value] + 1
+      }
+      return acc;
+    }, {});
+    const data = Object.keys(sortTipeARsip).map(key => ({name: key.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); }), value: Number(sortTipeARsip[key])}));
     data.sort(function(x,y){ return x.name == props.sortData ? -1 : y.name == props.sortData ? 1 : 0; });
     const Color = ['#39589A', '#338984', '#693F7B', '#DA5353', '#FBAE00', '#1F525E'];
-    Color.sort(function(x,y){ console.log(x, y, "LLLLLLL"); return x === props.sortColor ? -1 : y === props.sortColor ? 1 : 0; });
+    Color.sort(function(x,y){ return x === props.sortColor ? -1 : y === props.sortColor ? 1 : 0; });
     
 
 
@@ -72,10 +73,10 @@ const DocumentCard = (props) => {
               ) : 
               (
                 <React.Fragment>
-                <text style={{fontSize:'18px', fontWeight:500}} x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>
-                <text style={{fontSize:'55px', fontWeight:700}}  x={innerRadius + 175} y={innerRadius + 55} textAnchor={textAnchor} fill={fill}>{Percentage}</text>
-                <text x={innerRadius + 180} y={innerRadius + 77} textAnchor={textAnchor} fill={fill}>Total</text>
-                <text x={innerRadius + 215} y={innerRadius + 77} textAnchor={textAnchor} fill={fill}>{TotalArsip}</text>
+                <text style={{fontSize:'12px', fontWeight:500}} x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>
+                <text style={{fontSize:'55px', fontWeight:700}}  x={innerRadius + 115} y={innerRadius + 55} textAnchor={textAnchor} fill={fill}>{Percentage}</text>
+                <text x={innerRadius + 120} y={innerRadius + 77} textAnchor={textAnchor} fill={fill}>Total</text>
+                <text x={innerRadius + 155} y={innerRadius + 77} textAnchor={textAnchor} fill={fill}>{TotalArsip}</text>
                 </React.Fragment>
               )
             }
@@ -85,15 +86,15 @@ const DocumentCard = (props) => {
 
     return (
         <Card className={"DocumentCardContainer"} bordered={true}>
-               <PieChart  width={370} height={isMobile ? 125 : 200}>
+               <PieChart  width={370} height={isMobile ? 125 : 155}>
                     <Pie
                         data={data}
-                        cx={isMobile ? 68 : 95}
-                        cy={isMobile ? 40 : 95}
+                        cx={isMobile ? 68 : 60}
+                        cy={isMobile ? 40 : 75}
                         activeIndex={0}
                         activeShape={renderActiveShape}
-                        innerRadius={isMobile ? 30 : 60}
-                        outerRadius={isMobile ? 45 : 95}
+                        innerRadius={isMobile ? 30 : 40}
+                        outerRadius={isMobile ? 45 : 65}
                         fill="#8884d8"
                         paddingAngle={5}
                         dataKey="value"

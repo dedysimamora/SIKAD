@@ -3,7 +3,7 @@ const data = [
 		"noDefinitif": 1,
 		"kodeKlasifikasi": 92344,
 		"indeks": "SOSIALISASI",
-		"uraianInformasi": "PESERTA MEMBERIKAN PERTANYAAN ",
+		"uraianInformasi": "PESERTA MEMBERIKAN PERTANYAAN",
 		"tempatSimpan": "KLATEN",
 		"tanggalSimpan": "7/26/1999",
 		"hakcipta": "Indonesia",

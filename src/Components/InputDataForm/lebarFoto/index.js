@@ -6,15 +6,17 @@ import "./LebarFoto.css"
 
 const LebarFoto = (props) => {
     const {formik} = props
+    const isMobile = window.innerWidth <= 600
+    
 
     return (
         <div className={"LebarFotoContainer"}>
             <NumberInput
-                id="lebarFoto"
+                id={"lebarFoto"}
                 data-test-id="lebarFoto"
                 name="lebarFoto"
-                placeholder={" "}
-                customClassName={"ukuranFoto"}
+                placeholder={"Lebar Foto"}
+                customClassName={isMobile ? "lebarFotoMobile" : "lebarFoto"}
                 width={'100%'}
                 maxLength={3}
                 defaultValue={formik.values.lebarFoto}

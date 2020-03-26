@@ -22,15 +22,32 @@ code {
 
 .ant-modal-content{
   border-radius: 8px;
-  background-color: #00000000;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0.15);
+  background-color: #00000000 !important;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.15) !important;
 }
+
 
 .modalLoadingContainer{
     display: flex;
     flex-direction: column;
     text-align: center;
     margin: 10px 20px;
+}
+
+
+.border-transparent-5px{
+  border-color: #FFFFFFFF !important;
+  margin : 5px
+}
+
+.border-transparent-8px{
+  border-color: #FFFFFFFF !important;
+  margin : 8px
+}
+
+.border-transparent-15px{
+  border-color: #FFFFFFFF !important;
+  margin : 10px
 }
 
 

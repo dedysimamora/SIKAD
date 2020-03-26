@@ -23,9 +23,10 @@ const KualitasFoto = (props) => {
     return (
         <div className={"KualitasFotoContainer"}>
             <Select 
-                placeholder={"KualitasFoto"}
+                placeholder={"Kualitas Foto"}
                 className={"kualitasFotoDropdown"}
                 size={"small"}
+                value={formik.values.kualitasFoto}
                 onSelect={onSelect}
                 width={'95%'}
                 suggestion={suggestion}

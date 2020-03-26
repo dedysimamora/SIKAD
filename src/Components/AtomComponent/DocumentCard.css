@@ -1,6 +1,7 @@
 .ant-card-bordered {
     border-radius: 10px;
     border: 2px solid #e8e8e8;
+    margin-bottom: 15px;
 }
 
 .DocumentCardContainer {

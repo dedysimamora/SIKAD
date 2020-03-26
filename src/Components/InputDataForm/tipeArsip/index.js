@@ -47,6 +47,7 @@ const TipeArsip = (props) => {
                 className={"selectInput"}
                 size={"large"}
                 width={'100%'}
+                value={formik.values.tipeArsip}
                 suggestion={suggestion}
                 onSelect={onSelect}
                 error={!!(formik.errors.tipeArsip && formik.touched.tipeArsip)}

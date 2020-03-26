@@ -10,11 +10,52 @@
 
 
 .noKlasifikasi {
-    height: 45px;
+    height: 40px;
     border-radius: 10px !important;
 }
 
 .ukuranFoto {
     height: 35px;
     border-radius: 7px !important;
+}
+
+
+.lebarFotoMobile {
+    height: 30px;
+    width: 80px !important;
+    border-radius: 7px !important;
+}
+
+.lebarFotoMobile::placeholder {
+    font-size: 9px;
+}
+
+.lebarFoto {
+    height: 35px;
+    width: 40px !important;
+    border-radius: 7px !important;
+}
+
+.lebarFoto::placeholder {
+    color: white
+}
+
+.panjangFotoMobile {
+    height: 30px;
+    width: 80px !important;
+    border-radius: 7px !important;
+}
+
+.panjangFotoMobile::placeholder {
+    font-size: 9px;
+}
+
+.panjangFoto {
+    height: 35px;
+    width: 40px !important;
+    border-radius: 7px !important;
+}
+
+.panjangFoto::placeholder {
+    color: white
 }

@@ -9,6 +9,8 @@ const TanggalSimpan = (props) => {
     const {formik} = props
     const onSelect = (date, dateString) => {
         formik.setFieldValue('tanggalSimpan', dateString)
+        console.log(dateString, "<<<< date String");
+        console.log(formik.values.tanggalSimpan, "<<< formik");
     }
     return (
         <div className={"tanggalSimpanContainer"}>
@@ -18,6 +20,7 @@ const TanggalSimpan = (props) => {
                 className={"datePicker"}
                 size={"large"}
                 onChange={onSelect}
+                value={formik.values.tanggalSimpan}
                 width={"100%"}
                 error={!!(formik.errors.tanggalSimpan && formik.touched.tanggalSimpan)}
                 label={"Kode Klarifikasi"}

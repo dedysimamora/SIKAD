@@ -25,7 +25,7 @@ const NumberInput = (props) => {
                         onChange(tempEvent);
                     }}
                     onFocus={onFocus}
-                    className={`${customClassName} ant-input input-number`}
+                    className={`ant-input input-number ${customClassName}`}
                     style={{paddingRight:'0px'}}
                     options={{
                         numericOnly: true

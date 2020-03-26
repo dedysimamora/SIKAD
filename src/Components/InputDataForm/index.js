@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react'
 import { Button , Form, Row, Col, Upload, message  } from "antd";
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import moment from 'moment';
-import {storage} from  '../../Commons/FirebaseConfig'
+import { useSelector, useDispatch } from "react-redux";
+import Firebase from  '../../Commons/FirebaseConfig'
 
 import TempatSimpan from "./tempatSimpan"
 import HakCipta from "./hakcipta"
@@ -25,16 +26,20 @@ import TanggalSimpan from "./tanggalSimpan"
 import "./InputDataForm.css"
 
 const InputDataForm = (props) => {
-    
-    const {formik, setLoadingFunct} = props
-    const [noDefinitif, setNoDefinitif] = useState(null)
-    const [tglSimpan, setTglSimpan] = useState(null)
-    const [sizeFoto, setSizeFoto] = useState(null)
-    const [fotoQuality, setFotoQuality] = useState(null)
+    const isBase64 = require('is-base64');
+    const isMobile = window.innerWidth <= 600
+    const dispatch = useDispatch();
+    const AllArsip = useSelector(state => state.arsip.data);
+    const {formik, setLoadingFunct, action} = props
 
     const handleSubmit = () => {
+        
         setLoadingFunct(true)
-        const uploadImage = storage.ref(`images/image-${noDefinitif}`).putString(formik.values.foto, 'data_url')
+
+        
+        if(isBase64(formik.values.foto, {allowMime: true})){
+            const storage = Firebase.storage()
+            const uploadImage = storage.ref(`images/image-${formik.values.noDefinitif}`).putString(formik.values.foto, 'data_url')
             uploadImage.on(
                 "state_changed",
                 snapshoot => {},
@@ -45,7 +50,7 @@ const InputDataForm = (props) => {
                 () => {
                     storage
                         .ref("images")
-                        .child(`image-${noDefinitif}`)
+                        .child(`image-${formik.values.noDefinitif}`)
                         .getDownloadURL()
                         .then( url => {
                             formik.setFieldValue('foto', url)
@@ -53,59 +58,108 @@ const InputDataForm = (props) => {
                         })
                 }
             )
+        } else {
+            formik.handleSubmit()
+        }
+        
     }
 
     useEffect(() => {
-        let d = new Date();
-        let n = d.getSeconds();
-        formik.setFieldValue('noDefinitif', n)
+        dispatch.arsip.getAllArsip();
     }, [])
+
+    useEffect(() => {
+        if(AllArsip !== null) {
+            formik.setFieldValue('noDefinitif', AllArsip.length + 1)
+        }
+    }, [AllArsip])
   
-    return (
-        <Form layout={"vertical"}>
-            <div style={{display:'flex', flexDirection:'row', flexWrap:'wrap'}}>
-                <div style={{width:'50%'}}>
-                    <Row style={{marginBottom:'15px'}}>
-                        <Col span={12}>
-                            <p className={"noDefinitif"}>No Defiatif : {formik.values.noDefinitif !== null ? formik.values.noDefinitif : "-"}</p>
+    return ( 
+    <Form layout={"vertical"}>
+        <Row style={{width :"100%"}} justify="end">
+
+            {isMobile && 
+                (
+                    <React.Fragment>
+
+                        <Col md={{span : 12}} xs={{span : 24}} style={{marginBottom : '10px'}} >
+                            <Row >
+                                <Col  md={{span : 18, offset: 4}} xs={{span : 18,  offset: 3}}>
+                                    <Foto 
+                                        formik={formik}
+                                    />
+                                </Col>
+                            </Row>
+                            
+                                <Row style={{marginTop : '20px'}}>
+                                    <Col  span={12} style={{flexDirection:'row'}}>
+                                        <PanjangFoto 
+                                                formik={formik}
+                                            />
+                                    </Col>
+                                    <Col  span={12}  style={{ display:'flex', flexDirection:'row'}}>
+                                            <LebarFoto 
+                                                formik={formik}
+                                            />
+                                    </Col>
+                                </Row>
+                                <Row style={{marginTop : '10px'}}>
+                                    <Col  span={24}>
+                                        <KualitasFoto formik={formik} />
+                                    </Col>
+                                </Row>
                         </Col>
-                    </Row>
-                    <Row>
-                        <Col span={8}>
+                    </React.Fragment>
+                )
+            }
+
+            <Col md={{span : 12}} xs={{span : 24}}>
+                   {
+                       !isMobile && 
+                       (
+                        <Row style={{marginBottom:'10px'}}>
+                            <Col span={12}>
+                                <p className={"noDefinitif"}>No Definitif : {AllArsip !== null ? formik.values.noDefinitif : <span><LoadingOutlined /></span>}</p>
+                            </Col>
+                         </Row>
+                       )
+                   }
+                    <Row gutter={16}>
+                        <Col md={{span : 8}} xs={{span : 24}}>
                             <NoKlasifikasi  
                                 formik={formik}
                             />
                         </Col>
-                        <Col span={8}>
+                        <Col md={{span : 8}} xs={{span : 24}}>
                             <TanggalSimpan 
                                 formik={formik}
                             />
                         </Col>
-                        <Col span={8}>
+                        <Col md={{span : 8}} xs={{span : 24}}>
                             <TipeArsip 
                                 formik={formik}
                             />
                         </Col>
                     </Row>
-                    <Row>
-                        <Col span={12}>
+                    <Row gutter={16}>
+                        <Col md={{span : 12}} xs={{span : 24}}>
                             <HakCipta 
                                 formik={formik}
                             />
                         </Col>
-                        <Col span={12}>
+                        <Col md={{span : 12}} xs={{span : 24}}>
                             <LokasiTempat 
                                 formik={formik}
                             />
                         </Col>
                     </Row>
-                    <Row>
-                        <Col span={12}>
+                    <Row gutter={16}>
+                        <Col md={{span : 12}} xs={{span : 24}}>
                             <Keterangan 
                                 formik={formik}
                             />
                         </Col>
-                        <Col span={12}>
+                        <Col md={{span : 12}} xs={{span : 24}}>
                             <TempatSimpan 
                                 formik={formik}
                             />
@@ -126,18 +180,24 @@ const InputDataForm = (props) => {
                         </Col>
                     </Row>
                     
-                </div>
-                <div style={{width:"50%"}}>
-                    <Row style={{marginLeft : "20px"}}>
-                        <Col span={24}>
-                            <Foto 
-                                formik={formik}
-                            />
-                        </Col>
-                    </Row>
+            </Col>
+
+            {
+                    !isMobile && 
+            <React.Fragment>
+
+            <Col md={{span : 12}} xs={{span : 24}} >
+                <Row >
+                    <Col  md={{span : 18, offset: 4}} xs={{span : 18,  offset: 3}}>
+                        <Foto 
+                            formik={formik}
+                        />
+                    </Col>
+                </Row>
+                
                     <Row style={{marginBottom:'-10px', marginTop:'10px'}}>
-                        <Col span={4} offset={4}>
-                        <p style={{marginTop:'5px'}}>Ukuran Foto :</p>
+                        <Col span={4} offset={3}>
+                            <p style={{marginTop:'5px', fontSize : '12px'}}>Ukuran Foto :</p>
                         </Col>
                         <Col  span={3} style={{flexDirection:'row'}}>
                             <PanjangFoto 
@@ -145,10 +205,10 @@ const InputDataForm = (props) => {
                                 />
                         </Col>
                         <Col  span={1} style={{flexDirection:'row'}}>
-                            <p style={{marginTop:'5px', marginLeft:'-40px'}}>Cm</p>
+                            <p style={{marginTop:'3px', marginLeft:'-40px'}}>Cm</p>
                         </Col>
                         <Col  span={1} style={{flexDirection:'row'}}>
-                            <p style={{marginTop:'5px', marginLeft:'-25px'}}>X</p>
+                            <p style={{marginTop:'3px', marginLeft:'-25px'}}>X</p>
                         </Col>
                         <Col  span={3}  style={{ display:'flex', flexDirection:'row'}}>
                                 <LebarFoto 
@@ -156,35 +216,36 @@ const InputDataForm = (props) => {
                                 />
                         </Col>
                         <Col  span={1} style={{flexDirection:'row'}}>
-                            <p style={{marginTop:'5px', marginLeft:'-40px'}}>Cm</p>
+                            <p style={{marginTop:'3px', marginLeft:'-40px'}}>Cm</p>
                         </Col>
                         <Col  span={6}>
-                         <KualitasFoto formik={formik} />
+                            <KualitasFoto formik={formik} />
                         </Col>
-                        
-                    </Row>
-
-                </div>
-            </div>
-            <div style={{marginTop:'35px'}}>
-                <Row style={{display:'flex', flexDirection:'row', justifyContent:'center'}} >
-                    <Col span={23}>
-                        <Button 
-                            block 
-                            onClick={handleSubmit}
-                            className={"SaveButton"}
-                            disabled={!formik.isValid}
-                        >
-                            Unggah Data
-                        </Button>
-                    </Col>
-                </Row>
-            </div>
+                    
+                     </Row>
+                
             
+            </Col>
+        </React.Fragment>
+        }
 
 
             
-       </Form>
+
+        </Row>
+        <Row style={{marginTop:'25px'}}>
+            <Col md={{span : 24}} xs={{span : 24}}>
+                <Button 
+                    block 
+                    onClick={handleSubmit}
+                    className={"SaveButton"}
+                    disabled={!formik.isValid}
+                >
+                    {action == "inputData" ? "Unggah Data" : "Ubah Data"}
+                </Button>
+            </Col>
+        </Row>
+    </Form>
     )
 }
 

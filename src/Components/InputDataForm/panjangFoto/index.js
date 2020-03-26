@@ -6,6 +6,8 @@ import "./PanjangFoto.css"
 
 const PanjangFoto = (props) => {
     const {formik} = props
+    const isMobile = window.innerWidth <= 600
+    
 
     return (
         <div className={"PanjangFotoContainer"}>
@@ -13,10 +15,10 @@ const PanjangFoto = (props) => {
                 id="panjangFoto"
                 data-test-id="panjangFoto"
                 name="panjangFoto"
-                customClassName={"ukuranFoto"}
+                customClassName={isMobile ? "panjangFotoMobile" : "panjangFoto"}
                 width={'95%'}
                 maxLength={3}
-                placeholder={""}
+                placeholder={"Panjang Foto"}
                 defaultValue={formik.values.panjangFoto}
                 error={!!(formik.errors.panjangFoto && formik.touched.panjangFoto)}
                 label={"Kode Klarifikasi"}

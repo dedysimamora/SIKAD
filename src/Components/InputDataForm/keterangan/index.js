@@ -17,7 +17,7 @@ const Keterangan = (props) => {
                 id="keterangan"
                 data-test-id="keterangan"
                 name="keterangan"
-                maxLength={10}
+                maxLength={35}
                 placeholder={"Input Keterangan"}
                 defaultValue={formik.values.keterangan}
                 error={!!(formik.errors.keterangan && formik.touched.keterangan)}

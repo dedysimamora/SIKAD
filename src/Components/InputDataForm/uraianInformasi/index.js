@@ -11,7 +11,7 @@ const UraianInformasi = (props) => {
         <div className={"UraianInformasiContainer"}>
             <p className={"inputLabelText"}> Uraian Informasi : </p>
             <TextArea 
-                row={4}
+                row={2}
                 id="uraianInformasi"
                 data-test-id="uraianInformasi"
                 name="uraianInformasi"
