@@ -8,7 +8,7 @@ import EditData from "../Containers/EditData"
 import Arsip from "../Containers/Arsip"
 import Profile from "../Containers/Profile"
 import GetWindowSize from "../Commons/GetWindowSize"
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import "./BasicLayout.css"
 import { Provider } from "react-redux";
@@ -49,13 +49,16 @@ const BasicLayout = () => {
                     >
                         <div style={{ padding: 24, background: '#fff', textAlign: 'center' }}>
                             
-                                    <Switch>
-                                        <Route path="/dashboard" exact component={Dashboard} />
-                                        <Route path="/profile" exact component={Profile}  />
-                                        <Route path="/arsip" exact component={Arsip}  />
-                                        <Route path="/arsip/:type" exact  component={Arsip} />
-                                        <Route path="/tambah-data" exact  component={InputData} />
-                                        <Route path="/ubah-data/:arsipId" exact  component={EditData} />
+                                    <Switch>  
+                                        <Route exact path="/sikad/" render={() => (
+                                            <Redirect to="/sikad/dashboard"/>
+                                        )}/> 
+                                        <Route path="/sikad/dashboard" exact component={Dashboard} />
+                                        <Route path="/sikad/profile" exact component={Profile}  />
+                                        <Route path="/sikad/arsip" exact component={Arsip}  />
+                                        <Route path="/sikad/arsip/:type" exact  component={Arsip} />
+                                        <Route path="/sikad/tambah-data" exact  component={InputData} />
+                                        <Route path="/sikad/ubah-data/:arsipId" exact  component={EditData} />
                                     </Switch>
                         </div>
 

@@ -75,7 +75,7 @@ const Arsip = (props) => {
             image : "success",
             mainButton : {
                 title : 'Ok',
-                onClick : () => {window.location.href = "/dashboard";}
+                onClick : () => {window.location.href = "/sikad/dashboard";}
             }
         })
         })()
@@ -107,7 +107,7 @@ const Arsip = (props) => {
         setSearchData(filterData)
       }
     } else {
-      window.location.href = "/dashboard"
+      window.location.href = "/sikad/dashboard"
     }
     
  
@@ -178,7 +178,7 @@ const Arsip = (props) => {
              <span onClick={() => {GeneratePDF(record)}}>
                 <Icon  type="download"   className={isMobileLandscape ? "actionLogo-mobile" :"actionLogo"}/>
             </span>
-             <Link to={{pathname : `/ubah-data/${record.arsipId}`}}>
+             <Link to={{pathname : `/sikad/ubah-data/${record.arsipId}`}}>
                 <Icon theme="filled" type="edit"  className={isMobileLandscape ? "actionLogo-mobile" :"actionLogo"}/>
              </Link>
              <span onClick={() => {deleteConfirmation(record.arsipId, record.noDefnitif)}}>

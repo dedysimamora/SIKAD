@@ -4,6 +4,7 @@ import { ConnectedRouter } from "connected-react-router";
 import { Route, Switch } from "react-router-dom";
 
 import BasicLayouts from "./Layout/BasicLayout";
+import Landing from "../src/Containers/Landing"
 
 import store, { history } from "./store";
 
@@ -15,7 +16,8 @@ const Router = () => (
     <Provider store={store}>
         <ConnectedRouter history={history}>
                     <Switch>
-                        <Route path="/" component={BasicLayouts} />
+                        <Route exact path="/" component={Landing} />
+                        <Route path="/sikad" component={BasicLayouts} />
                     </Switch>
         </ConnectedRouter>
     </Provider>
