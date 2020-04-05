@@ -6,10 +6,6 @@ import "./TempatSimpan.css"
 
 const TempatSimpan = (props) => {
     const {formik} = props
-    const onCasd = () => {
-        console.log("asd");
-        
-    }
     return (
         <div className={"tempatSimpanContainer"}>
             <p className={"inputLabelText"}> Tempat Simpan : </p>

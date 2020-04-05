@@ -6,10 +6,6 @@ import "./LokasiTempat.css"
 
 const LokasiTempat = (props) => {
     const {formik} = props
-    const onCasd = () => {
-        console.log("asd");
-        
-    }
     return (
         <div className={"LokasiTempatContainer"}>
             <p className={"inputLabelText"}> Lokasi Tempat : </p>

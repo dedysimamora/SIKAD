@@ -9,6 +9,7 @@ import Arsip from "../Containers/Arsip"
 import Profile from "../Containers/Profile"
 import GetWindowSize from "../Commons/GetWindowSize"
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
+import PrivateRoute from "./BasicLayoutComponents/PrivateRoute"
 import { ConnectedRouter } from "connected-react-router";
 import "./BasicLayout.css"
 import { Provider } from "react-redux";
@@ -25,6 +26,16 @@ const BasicLayout = () => {
             setCollapsed(true)
         }
     }, [width])
+
+    // useEffect(() => {
+    //     console.log("kena woi use effect nya");
+        
+    //     if(localStorage.getItem('token') == null){
+    //         window.location.href = "/";
+    //     }
+    // }, [localStorage.getItem('token')])
+
+
 
 
     const toogle = () => {
@@ -54,7 +65,6 @@ const BasicLayout = () => {
                                             <Redirect to="/sikad/dashboard"/>
                                         )}/> 
                                         <Route path="/sikad/dashboard" exact component={Dashboard} />
-                                        <Route path="/sikad/profile" exact component={Profile}  />
                                         <Route path="/sikad/arsip" exact component={Arsip}  />
                                         <Route path="/sikad/arsip/:type" exact  component={Arsip} />
                                         <Route path="/sikad/tambah-data" exact  component={InputData} />

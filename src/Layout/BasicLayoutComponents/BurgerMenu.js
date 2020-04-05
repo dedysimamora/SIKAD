@@ -76,12 +76,6 @@ const BurgerMenu = (props) => {
                         <span>Tambah Data</span>
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="/sikad/profile">
-                    <Link to={{pathname : '/sikad/profile'}}>
-                        <Icon type="user" />
-                        <span>Profile</span>
-                    </Link>
-                </Menu.Item>
             </Menu>
         </Sider>
     )

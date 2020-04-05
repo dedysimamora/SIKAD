@@ -6,10 +6,6 @@ import "./Keterangan.css"
 
 const Keterangan = (props) => {
     const {formik} = props
-    const onCasd = () => {
-        console.log("asd");
-        
-    }
     return (
         <div className={"KeteranganContainer"}>
             <p className={"inputLabelText"}> Keterangan : </p>

@@ -6,10 +6,6 @@ import "./HakCipta.css"
 
 const HakCipta = (props) => {
     const {formik} = props
-    const onCasd = () => {
-        console.log("asd");
-        
-    }
     return (
         <div className={"HakCiptaContainer"}>
             <p className={"inputLabelText"}> Hak Cipta : </p>

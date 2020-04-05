@@ -9,8 +9,6 @@ const TanggalSimpan = (props) => {
     const {formik} = props
     const onSelect = (date, dateString) => {
         formik.setFieldValue('tanggalSimpan', dateString)
-        console.log(dateString, "<<<< date String");
-        console.log(formik.values.tanggalSimpan, "<<< formik");
     }
     return (
         <div className={"tanggalSimpanContainer"}>

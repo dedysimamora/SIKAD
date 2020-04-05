@@ -78,8 +78,6 @@ const InputData = () => {
                 .required(" ")
         }),
         onSubmit: (values, actions) => {
-            console.log(values, "<<<<<<<<<<<<<<<<<<<");
-            
             let db = Firebase.firestore()
             db.collection('arsip').add(values)
             .then((snapshot) => {

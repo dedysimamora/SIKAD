@@ -181,18 +181,13 @@ const Arsip = (props) => {
              <Link to={{pathname : `/sikad/ubah-data/${record.arsipId}`}}>
                 <Icon theme="filled" type="edit"  className={isMobileLandscape ? "actionLogo-mobile" :"actionLogo"}/>
              </Link>
-             <span onClick={() => {deleteConfirmation(record.arsipId, record.noDefnitif)}}>
+             <span onClick={() => {deleteConfirmation(record.arsipId, record.noDefinitif)}}>
                 <Icon theme="filled" type="delete"  className={isMobileLandscape ? "actionLogo-mobile" :"actionLogo"}/>
             </span>
           </span>
         ),
       },
     ];
-
-    
-  const  onChange = (pagination, filters, sorter, extra) => {
-      console.log('params', pagination, filters, sorter, extra);
-  }
 
   const closeModal = () => {
       setModal({
@@ -232,7 +227,6 @@ const Arsip = (props) => {
                           className={isMobileLandscape ? "arsip-table-mobile" :"arsip-table"}
                           columns={columns} 
                           dataSource={searchData} 
-                          onChange={onChange} 
                           bordered={true}
                           pagination={
                               {

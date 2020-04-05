@@ -14,8 +14,6 @@ const FotoUpload = (props) => {
     const [progres, setProgres] = useState(0)
 
     useEffect(() => {
-        console.log(formik.values.foto, "<<<<<<<<<<<<<<<<<<<<<<<ll");
-        
         if(formik.values.foto == ""){
             setImageUrl(null)
             formik.setFieldValue('foto', "")

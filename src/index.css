@@ -16,8 +16,7 @@ code {
 
 .has-error .ant-form-explain {
   font-size: 12px;
-  margin-right: 10px;
-  text-align: right
+  margin-left: 10px;
 }
 
 .ant-modal-content{
