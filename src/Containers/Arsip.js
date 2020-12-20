@@ -114,13 +114,15 @@ const Arsip = (props) => {
 }, [match.params])
 
   const GeneratePDF = (arsipData) => {
-   
+                setLoading(true)
                 pdf(<PdfTemplate data={arsipData} />)
                 .toBlob()
                 .then(finalPDFData => {
-                    FileSaver.saveAs(finalPDFData, `asd.pdf`);
+                  setLoading(false)
+                    FileSaver.saveAs(finalPDFData, `${HelperFunction.CapitalizeNoDash(arsipData.tipeArsip)} - ${arsipData.noDefinitif}.pdf`);
                 })
                 .catch(err => {
+                  setLoading(false)
                     setModal({
                       visible : true,
                       title : 'Gagal Saat Mengunduh Dokumen',

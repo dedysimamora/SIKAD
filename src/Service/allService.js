@@ -10,6 +10,7 @@ userSettingsApi.getAllArsip = () => {
             .then((snapshot) => {
                 let allArsip = []
                 snapshot.forEach((doc) => {
+                console.log(doc.data(), "<<<<<<")
                 allArsip.push({...doc.data(), arsipId : doc.id});
                 });
 

@@ -28,15 +28,22 @@
 .RegisterButton {
     width: 60%;
     margin-left: 20%;
+    color: white;
+    background-color: #001529;
+}
+
+.RegisterButton :hover {
+  color: white;
+  background-color: #001529;
 }
 
 .formTitle {
-  font-size: 20px;
+  font-size: 26px;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   letter-spacing: 2px;
-  color: #00544E;
+  color: #001529;
 }
 
 .formSubTitle {
@@ -60,5 +67,6 @@
   border-radius: 8px;
   
 }
+
 
 

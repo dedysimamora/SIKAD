@@ -18,7 +18,7 @@ const PieChartComponent = (props) => {
       return acc;
     }, {});
     const data = Object.keys(sortTipeARsip).map(key => ({name: key.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); }), value: Number(sortTipeARsip[key])}));
-    const Color = ['#39589A', '#338984', '#693F7B', '#DA5353', '#FBAE00', '#1F525E'];
+    const Color = ['#001529', '#01264a', '#02396f', '#0059af', '#007cef', '#1890ff'];
 
      
      const onPieEnter = (data, index) => {
@@ -70,7 +70,7 @@ const PieChartComponent = (props) => {
       
        
     return (
-        <div style={{ width: '100%', height: 300 }}>
+        <div style={{ width: '100%', height: 300, marginBottom: isMobile ? "-70px" : "0px" }}>
             <ResponsiveContainer>
                 <PieChart width={500} height={400}>
                     <Pie

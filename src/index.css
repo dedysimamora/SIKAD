@@ -14,9 +14,10 @@ code {
     monospace;
 }
 
-.has-error .ant-form-explain {
+.ant-form-explain {
   font-size: 12px;
-  margin-left: 10px;
+  margin-right: 10px;
+  text-align: right
 }
 
 .ant-modal-content{

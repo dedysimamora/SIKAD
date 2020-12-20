@@ -18,7 +18,8 @@ const BarChartComponent = (props) => {
       return acc;
     }, {});
     const data = Object.keys(sortTipeARsip).map(key => ({name: key.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); }), jumlah: Number(sortTipeARsip[key])}));
-    const Color = ['#39589A', '#338984', '#693F7B', '#DA5353', '#FBAE00', '#1F525E'];
+    const Color = ['#001529', '#01264a', '#02396f', '#0059af', '#007cef', '#1890ff'];
+    
       
        
     return (

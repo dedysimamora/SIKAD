@@ -1,13 +1,26 @@
 import React from 'react'
-
+import { useSelector, useDispatch } from "react-redux";
 import Select from "../../AtomComponent/Select"
 
 import "./TipeArsip.css"
 
 const TipeArsip = (props) => {
     const {formik} = props
+    const AllArsip = useSelector(state => state.arsip.data);
     const onSelect = (e) => {
+        console.log(JSON.stringify(AllArsip, 2, null), "<<<<<<<<<<<<<<<<<<<<<");
+
+        let arrOfNumber = AllArsip.map((data) => {
+            if(data.tipeArsip == e) {
+              return data.noDefinitif
+            } else { 
+              return 0
+            }
+        })
+        
+        
         formik.setFieldValue('tipeArsip', e)
+        formik.setFieldValue('noDefinitif', Math.max(...arrOfNumber) + 1)
         
     }
 

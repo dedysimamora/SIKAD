@@ -1,0 +1,7 @@
+[
+    {
+      "origin": ["https://sikad-1d4ac.firebaseapp.com/"],
+      "method": ["GET"],
+      "maxAgeSeconds": 3600
+    }
+  ]

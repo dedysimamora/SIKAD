@@ -29,14 +29,10 @@ const InputDataForm = (props) => {
     const isBase64 = require('is-base64');
     const isMobile = window.innerWidth <= 600
     const dispatch = useDispatch();
-    const AllArsip = useSelector(state => state.arsip.data);
     const {formik, setLoadingFunct, action} = props
 
     const handleSubmit = () => {
-        
         setLoadingFunct(true)
-
-        
         if(isBase64(formik.values.foto, {allowMime: true})){
             const storage = Firebase.storage()
             const uploadImage = storage.ref(`images/image-${formik.values.noDefinitif}`).putString(formik.values.foto, 'data_url')
@@ -68,11 +64,11 @@ const InputDataForm = (props) => {
         dispatch.arsip.getAllArsip();
     }, [])
 
-    useEffect(() => {
-        if(AllArsip !== null) {
-            formik.setFieldValue('noDefinitif', AllArsip.length + 1)
-        }
-    }, [AllArsip])
+    // useEffect(() => {
+    //     if(AllArsip !== null) {
+    //         formik.setFieldValue('noDefinitif', AllArsip.length + 1)
+    //     }
+    // }, [AllArsip])
   
     return ( 
     <Form layout={"vertical"}>
@@ -119,7 +115,7 @@ const InputDataForm = (props) => {
                        (
                         <Row style={{marginBottom:'10px'}}>
                             <Col span={12}>
-                                <p className={"noDefinitif"}>No Definitif : {AllArsip !== null ? formik.values.noDefinitif : <span><LoadingOutlined /></span>}</p>
+                                <p className={"noDefinitif"}>No Definitif : {formik.values.noDefinitif !== "" ? formik.values.noDefinitif : <span>-</span>}</p>
                             </Col>
                          </Row>
                        )

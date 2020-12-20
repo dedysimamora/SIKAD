@@ -193,9 +193,9 @@ const  Landing = () => {
                     </Form.Item>
                     <Form.Item>
                       {
-                        register ? ( <Button disabled={!formik.isValid} onClick={registerAction} type="primary" size="default" shape="round"  className="RegisterButton">
+                        register ? ( <Button disabled={!formik.isValid} onClick={registerAction} size="default" shape="round"  className="RegisterButton">
                         Register
-                      </Button>) : ( <Button  onClick={loginAction} type="primary" size="default" shape="round"  className="RegisterButton">
+                      </Button>) : ( <Button  onClick={loginAction}  size="default" shape="round"  className="RegisterButton">
                           Login
                         </Button>)
                       }
