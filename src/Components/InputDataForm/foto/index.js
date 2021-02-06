@@ -101,7 +101,7 @@ const FotoUpload = (props) => {
                     {loading ? 
                         <Progress type="circle" percent={progres} /> : 
                         <React.Fragment>
-                            <PlusOutlined className="uploadFotoIcon" /> 
+                            <CloseOutlined className="uploadFotoIcon" /> 
                             <div className="ant-upload-text">Unggah Foto</div>
                         </React.Fragment>
                     }

@@ -18,7 +18,7 @@
     "env-cmd": "^10.1.0",
     "file-saver": "^2.0.2",
     "firebase": "^7.11.0",
-    "formik": "^2.1.4",
+    "formik": "^2.2.6",
     "history": "^4.10.1",
     "is-base64": "^1.1.0",
     "moment": "^2.24.0",
@@ -34,7 +34,7 @@
     "react-spinners": "^0.8.1",
     "recharts": "^2.0.0-beta.1",
     "xlsx": "^0.15.6",
-    "yup": "^0.28.3"
+    "yup": "^0.28.5"
   },
   "scripts": {
     "start": "react-app-rewired start",

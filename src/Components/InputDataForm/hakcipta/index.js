@@ -1,33 +1,33 @@
-import React from 'react'
+import React from "react";
 
-import TextInput from "../../AtomComponent/Input/TextInput"
+import TextInput from "../../AtomComponent/Input/TextInput";
 
-import "./HakCipta.css"
+import "./HakCipta.css";
 
 const HakCipta = (props) => {
-    const {formik} = props
-    return (
-        <div className={"HakCiptaContainer"}>
-            <p className={"inputLabelText"}> Hak Cipta : </p>
-            <TextInput
-                id="hakCipta"
-                data-test-id="hakCipta"
-                name="hakCipta"
-                maxLength={10}
-                placeholder={"Input Hak Cipta"}
-                defaultValue={formik.values.hakCipta}
-                error={!!(formik.errors.hakCipta && formik.touched.hakCipta)}
-                label={"Kode Klarifikasi"}
-                onChange={formik.handleChange}
-                onFocus={formik.handleBlur}
-                helperText={
-                    formik.errors.hakCipta && formik.touched.hakCipta
-                        ? formik.errors.hakCipta
-                        : ""
-                }
-            />
-        </div>
-    )
-}
+  const { formik } = props;
+  return (
+    <div className={"HakCiptaContainer"}>
+      <p className={"inputLabelText"}> No Buku : </p>
+      <TextInput
+        id="noBuku"
+        data-test-id="noBuku"
+        name="noBuku"
+        maxLength={10}
+        placeholder={"Input No Buku"}
+        defaultValue={formik.values.noBuku}
+        error={!!(formik.errors.noBuku && formik.touched.noBuku)}
+        label={"Kode Klarifikasi"}
+        onChange={formik.handleChange}
+        onFocus={formik.handleBlur}
+        helperText={
+          formik.errors.noBuku && formik.touched.noBuku
+            ? formik.errors.noBuku
+            : ""
+        }
+      />
+    </div>
+  );
+};
 
-export default HakCipta
+export default HakCipta;

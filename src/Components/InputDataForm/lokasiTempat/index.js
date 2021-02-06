@@ -1,33 +1,33 @@
-import React from 'react'
+import React from "react";
 
-import TextInput from "../../AtomComponent/Input/TextInput"
+import TextInput from "../../AtomComponent/Input/TextInput";
 
-import "./LokasiTempat.css"
+import "./LokasiTempat.css";
 
 const LokasiTempat = (props) => {
-    const {formik} = props
-    return (
-        <div className={"LokasiTempatContainer"}>
-            <p className={"inputLabelText"}> Lokasi Tempat : </p>
-            <TextInput
-                id="lokasiTempat"
-                data-test-id="lokasiTempat"
-                name="lokasiTempat"
-                maxLength={10}
-                placeholder={"Input Lokasi Tempat"}
-                defaultValue={formik.values.lokasiTempat}
-                error={!!(formik.errors.lokasiTempat && formik.touched.lokasiTempat)}
-                label={"Kode Klarifikasi"}
-                onChange={formik.handleChange}
-                onFocus={formik.handleBlur}
-                helperText={
-                    formik.errors.lokasiTempat && formik.touched.lokasiTempat
-                        ? formik.errors.lokasiTempat
-                        : ""
-                }
-            />
-        </div>
-    )
-}
+  const { formik } = props;
+  return (
+    <div className={"LokasiTempatContainer"}>
+      <p className={"inputLabelText"}> Retensi : </p>
+      <TextInput
+        id="retensi"
+        data-test-id="retensi"
+        name="retensi"
+        maxLength={10}
+        placeholder={"Input retensi"}
+        defaultValue={formik.values.retensi}
+        error={!!(formik.errors.retensi && formik.touched.retensi)}
+        label={"Kode Klarifikasi"}
+        onChange={formik.handleChange}
+        onFocus={formik.handleBlur}
+        helperText={
+          formik.errors.retensi && formik.touched.retensi
+            ? formik.errors.retensi
+            : ""
+        }
+      />
+    </div>
+  );
+};
 
-export default LokasiTempat
+export default LokasiTempat;
