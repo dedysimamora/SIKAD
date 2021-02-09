@@ -52,13 +52,13 @@ const BurgerMenu = (props) => {
           </Menu.Item>
           <Menu.Item key="/sikad/arsip/arsip-inaktif">
             <Link to={{ pathname: "/sikad/arsip/arsip-inaktif" }}>
-              <Icon type="picture" />
+              <Icon type="file-text" />
               <span>Arsip Inaktif</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="/sikad/arsip/arsip-statis">
             <Link to={{ pathname: "/sikad/arsip/arsip-statis" }}>
-              <Icon type="play-square" />
+              <Icon type="file-text" />
               <span>Arsip Statis</span>
             </Link>
           </Menu.Item>

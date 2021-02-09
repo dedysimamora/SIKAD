@@ -8,21 +8,21 @@ const HakCipta = (props) => {
   const { formik } = props;
   return (
     <div className={"HakCiptaContainer"}>
-      <p className={"inputLabelText"}> No Buku : </p>
+      <p className={"inputLabelText"}> No Boks : </p>
       <TextInput
-        id="noBuku"
-        data-test-id="noBuku"
-        name="noBuku"
+        id="noBoks"
+        data-test-id="noBoks"
+        name="noBoks"
         maxLength={10}
-        placeholder={"Input No Buku"}
-        defaultValue={formik.values.noBuku}
-        error={!!(formik.errors.noBuku && formik.touched.noBuku)}
+        placeholder={"Input No Boks"}
+        defaultValue={formik.values.noBoks}
+        error={!!(formik.errors.noBoks && formik.touched.noBoks)}
         label={"Kode Klarifikasi"}
         onChange={formik.handleChange}
         onFocus={formik.handleBlur}
         helperText={
-          formik.errors.noBuku && formik.touched.noBuku
-            ? formik.errors.noBuku
+          formik.errors.noBoks && formik.touched.noBoks
+            ? formik.errors.noBoks
             : ""
         }
       />

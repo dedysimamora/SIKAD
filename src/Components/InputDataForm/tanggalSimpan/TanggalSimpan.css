@@ -1,12 +1,16 @@
 .tanggalSimpanContainer {
-    display: flex;
-    flex-direction: column;
-    height: 90px;
+  display: flex;
+  flex-direction: column;
+  height: 90px;
 }
 
 .tanggalSimpanLabel {
-    font-size: 14px;
-    font-weight: bold;
-    text-align: left;
-    margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.ant-calendar-picker-large {
+  width: 100%;
 }
