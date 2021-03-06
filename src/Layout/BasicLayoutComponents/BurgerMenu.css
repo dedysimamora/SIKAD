@@ -1,0 +1,82 @@
+/* sikad menu sider style */
+#SIKAD-sider {
+  background-color: #001529;
+}
+
+#SIKAD-sider .ant-menu-inline {
+  background-color: #001529;
+}
+
+#SIKAD-sider .ant-menu-sub {
+  background-color: #000c17;
+}
+
+#SIKAD-sider .ant-menu-item-selected {
+  background-color: #0f6bd0;
+}
+
+#SIKAD-sider .ant-menu-submenu-title a {
+  color: #0f6bd0;
+}
+
+#SIKAD-sider .ant-menu-submenu-title a:hover {
+  color: white;
+}
+
+/* sekda menu sider style */
+
+#SEKDA-sider {
+  background-color: #bbbbbb;
+}
+
+#SEKDA-sider .ant-menu-inline {
+  background-color: #bbbbbb;
+}
+
+#SEKDA-sider .ant-menu-item a {
+  color: #222222;
+}
+
+#SEKDA-sider .ant-menu-sub {
+  background-color: #aaaaaa;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%) inset;
+}
+
+#SEKDA-sider .ant-menu-item-selected {
+  background-color: #666666;
+}
+
+#SEKDA-sider .ant-menu-submenu-title a {
+  color: #111111;
+}
+
+#SEKDA-sider .ant-menu-submenu-title a:hover {
+  color: white;
+}
+
+/* siakum menu sider style */
+
+#SIAKUM-sider {
+  background-color: #2e856e;
+}
+
+#SIAKUM-sider .ant-menu-inline {
+  background-color: #2e856e;
+}
+
+#SIAKUM-sider .ant-menu-sub {
+  background-color: #006a4e;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%) inset;
+}
+
+#SIAKUM-sider .ant-menu-item-selected {
+  background-color: #1c5042;
+}
+
+#SIAKUM-sider .ant-menu-submenu-title a {
+  color: white;
+}
+
+#SIAKUM-sider .ant-menu-submenu-title a:hover {
+  color: white;
+}

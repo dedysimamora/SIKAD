@@ -1,16 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import BasicLayout from "./Layout/BasicLayout"
-import * as serviceWorker from './serviceWorker';
-
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import BasicLayout from "./Layout/BasicLayout";
+import * as serviceWorker from "./serviceWorker";
 
 import Router from "./routes";
 
-
-console.log(`${process.env.REACT_APP_FIREBASE_API_KEY}`, 'llllllllllllllllllllllllllllllllllllll')
-
-ReactDOM.render(<Router />, document.getElementById('root'));
+ReactDOM.render(<Router />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

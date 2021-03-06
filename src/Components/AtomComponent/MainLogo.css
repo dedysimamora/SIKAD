@@ -1,39 +1,35 @@
 .MainLogoContainer {
-    padding: 10px;
+  padding: 10px;
 }
 
-
-.MainLogoTitleCollapsed{
-    color: white;
-    font-size: 35px;
-    font-weight: 700;
-    margin-left: 25px;
-    margin-bottom: 0px;
-    margin-top: 8px;
+.MainLogoTitleCollapsed {
+  color: white;
+  font-size: 35px;
+  font-weight: 700;
+  margin-bottom: 0px;
+  margin-top: 8px;
 }
 
-.MainLogoTitle{
-    color: white;
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 0px;
-    margin-left: 8px;
+.MainLogoTitle {
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 0px;
+  margin-left: 8px;
 }
 
-.MainLogoSubTitle{
-    display: none;
+.MainLogoSubTitle {
+  display: none;
 }
 
 .MainLogoSubTitleCollapsed {
-    color: white;
-    font-size: 8px;
-    font-weight: 500;
-    margin-top: -8px;
-    text-align: center;
+  color: white;
+  font-size: 8px;
+  font-weight: 500;
+  margin-top: -8px;
+  text-align: center;
 }
 
 .MainLogoImage {
-    margin-top: 17px;
-
+  margin-top: 17px;
 }
-
