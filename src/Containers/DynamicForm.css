@@ -1,0 +1,31 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  height: 90px;
+}
+
+.inputLabel {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.inputContainer .ant-form-explain {
+  font-size: 12px;
+  margin-left: 10px;
+  text-align: left;
+}
+
+.inputContainer .ant-calendar-picker-large {
+  width: 100%;
+}
+
+.inputContainer .ant-select-lg {
+  width: 100%;
+}
+
+.inputContainer .input-number {
+  height: 40px;
+  border-radius: 8px !important;
+}

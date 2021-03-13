@@ -11,6 +11,8 @@ const BurgerMenu = (props) => {
   const { collapsed, webType } = props;
   const { pathname } = useLocation();
 
+  console.log(DynamicData[webType].menu, "<<<<<<<<<< wakidaw");
+  // console.log(DynamicData[webType].menu, "<<<<<<<<<<, wakida");
   return (
     <Sider
       id={`${webType}-sider`}
@@ -30,14 +32,38 @@ const BurgerMenu = (props) => {
         defaultSelectedKeys={["/dashboard"]}
         selectedKeys={pathname}
       >
-        {DynamicData[webType].menu.map((e) => (
-          <Menu.Item key={e.pathName}>
-            <Link to={{ pathname: e.pathName }}>
-              <Icon type={e.icon} />
-              <span>{e.title}</span>
-            </Link>
-          </Menu.Item>
-        ))}
+        {DynamicData[webType].menu.map((e) =>
+          e.childMenu.length !== 0 ? (
+            <SubMenu
+              key={e.pathName}
+              title={
+                <Link to={{ pathname: e.pathName }}>
+                  <span>
+                    <Icon type={e.icon} />
+                    <span>{e.title}</span>
+                  </span>
+                </Link>
+              }
+            >
+              {" "}
+              {e.childMenu.map((a) => (
+                <Menu.Item key={a.pathName}>
+                  <Link to={{ pathname: a.pathName }}>
+                    <Icon type={a.icon} />
+                    <span>{a.title}</span>
+                  </Link>
+                </Menu.Item>
+              ))}
+            </SubMenu>
+          ) : (
+            <Menu.Item key={e.pathName}>
+              <Link to={{ pathname: e.pathName }}>
+                <Icon type={e.icon} />
+                <span>{e.title}</span>
+              </Link>
+            </Menu.Item>
+          )
+        )}
 
         {/* <Menu.Item key="/sikad/dashboard">
           <Link to={{ pathname: "/sikad/dashboard" }}>

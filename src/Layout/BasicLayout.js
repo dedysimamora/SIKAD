@@ -4,6 +4,7 @@ import BurgerMenu from "./BasicLayoutComponents/BurgerMenu";
 import GlobalHeader from "./BasicLayoutComponents/GlobalHeader";
 import Dashboard from "../Containers/Dashboard";
 import InputData from "../Containers/InputData";
+import DynamicForm from "../Containers/DynamicForm";
 import EditData from "../Containers/EditData";
 import Arsip from "../Containers/Arsip";
 import Profile from "../Containers/Profile";
@@ -19,6 +20,7 @@ import { ConnectedRouter } from "connected-react-router";
 import "./BasicLayout.css";
 import { Provider } from "react-redux";
 import store, { history } from "../store";
+import DynamicData from "../DynamicData";
 const { Content } = Layout;
 
 const BasicLayout = ({ webType }) => {
@@ -68,13 +70,27 @@ const BasicLayout = ({ webType }) => {
                     path="/sikad/"
                     render={() => <Redirect to="/sikad/dashboard" />}
                   />
-                  <Route path="/sikad/dashboard" exact component={Dashboard} />
-                  <Route path="/sikad/arsip" exact component={Arsip} />
-                  <Route path="/sikad/arsip/:type" exact component={Arsip} />
+                  <Route
+                    path="/sikad/dashboard"
+                    exact
+                    render={() => <Dashboard webType={"SIKAD"} />}
+                  />
+                  <Route
+                    path="/sikad/arsip"
+                    exact
+                    render={(props) => <Arsip webType={"SIKAD"} {...props} />}
+                  />
+                  <Route
+                    path="/sikad/arsip/:type"
+                    exact
+                    render={(props) => <Arsip webType={"SIKAD"} {...props} />}
+                  />
                   <Route
                     path="/sikad/tambah-data"
                     exact
-                    component={InputData}
+                    render={(props) => (
+                      <InputData webType={"SIKAD"} {...props} />
+                    )}
                   />
                   <Route
                     path="/sikad/ubah-data/:arsipId"
@@ -87,18 +103,34 @@ const BasicLayout = ({ webType }) => {
                     path="/sekda/"
                     render={() => <Redirect to="/sekda/dashboard" />}
                   />
-                  <Route path="/sekda/dashboard" exact component={Dashboard} />
-                  <Route path="/sekda/arsip" exact component={Arsip} />
-                  <Route path="/sekda/arsip/:type" exact component={Arsip} />
+                  <Route
+                    path="/sekda/dashboard"
+                    exact
+                    render={() => <Dashboard webType={"SEKDA"} />}
+                  />
+                  <Route
+                    path="/sekda/arsip"
+                    exact
+                    render={(props) => <Arsip webType={"SEKDA"} {...props} />}
+                  />
+                  <Route
+                    path="/sekda/arsip/:type"
+                    exact
+                    render={(props) => <Arsip webType={"SEKDA"} {...props} />}
+                  />
                   <Route
                     path="/sekda/tambah-data"
                     exact
-                    component={InputData}
+                    render={(props) => (
+                      <DynamicForm webType={"SEKDA"} type={"add"} {...props} />
+                    )}
                   />
                   <Route
                     path="/sekda/ubah-data/:arsipId"
                     exact
-                    component={EditData}
+                    render={(props) => (
+                      <DynamicForm webType={"SEKDA"} type={"edit"} {...props} />
+                    )}
                   />
 
                   <Route
@@ -106,18 +138,38 @@ const BasicLayout = ({ webType }) => {
                     path="/siakum/"
                     render={() => <Redirect to="/siakum/dashboard" />}
                   />
-                  <Route path="/siakum/dashboard" exact component={Dashboard} />
-                  <Route path="/siakum/arsip" exact component={Arsip} />
-                  <Route path="/siakum/arsip/:type" exact component={Arsip} />
+                  <Route
+                    path="/siakum/dashboard"
+                    exact
+                    render={() => <Dashboard webType={"SIAKUM"} />}
+                  />
+                  <Route
+                    path="/siakum/arsip"
+                    exact
+                    render={(props) => <Arsip webType={"SIAKUM"} {...props} />}
+                  />
+                  <Route
+                    path="/siakum/arsip/:type"
+                    exact
+                    render={(props) => <Arsip webType={"SIAKUM"} {...props} />}
+                  />
                   <Route
                     path="/siakum/tambah-data"
                     exact
-                    component={InputData}
+                    render={(props) => (
+                      <DynamicForm webType={"SIAKUM"} type={"add"} {...props} />
+                    )}
                   />
                   <Route
                     path="/siakum/ubah-data/:arsipId"
                     exact
-                    component={EditData}
+                    render={(props) => (
+                      <DynamicForm
+                        webType={"SIAKUM"}
+                        type={"edit"}
+                        {...props}
+                      />
+                    )}
                   />
                 </Switch>
               </div>

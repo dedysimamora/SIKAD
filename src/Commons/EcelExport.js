@@ -1,91 +1,83 @@
-import React from 'react'
+import React from "react";
 import ReactExport from "react-data-export";
-import { Button} from 'antd';
+import { Button } from "antd";
+import DynamicData from "../DynamicData";
 
 const EcelExport = (props) => {
-    const isMobile = window.innerWidth <= 600
-    const isMobileLandscape = window.innerWidth <= 900
-    const {data, fileName} = props
-    const ReorderObject = data.map(data => ({
-        "No" : data.noDefinitif,
-        "Kode Klarifikasi" : data.noKlasifikasi,
-        "Indeks" : data.indeks,
-        "Hak Cipta" : data.hakCipta,
-        "Uraian Informasi" : data.uraianInformasi,
-        "Lokasi" : data.lokasiTempat,
-        "Tempat Simpan" : data.tempatSimpan,
-        "Waktu" : data.tanggalSimpan,
-        "Ukuran " : `${data.panjangFoto} Cm X ${data.lebarFoto} Cm`,
-        "Kualitas" : data.kualitasFoto ? "Baik" : "Buruk",
-        "Keterangan" : data.keterangan
-      }))
+  const isMobile = window.innerWidth <= 600;
+  const isMobileLandscape = window.innerWidth <= 900;
+  const { data, fileName, webType } = props;
+  const ReorderObject = DynamicData[webType].generateExcelData(data);
 
-      
-    
-    const ExcelFile = ReactExport.ExcelFile;
-    const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+  const ExcelFile = ReactExport.ExcelFile;
+  const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
 
+  const colomStyle = {
+    alignment: { vertical: "center", horizontal: "center" },
+    font: {
+      bold: true,
+      color: { rgb: `${DynamicData[webType].color.thirdColorRGBA}` },
+    },
+    fill: {
+      patternType: "solid",
+      fgColor: { rgb: `${DynamicData[webType].color.mainColorRGBA}` },
+    },
+    border: {
+      top: {
+        style: "thick",
+        color: { rgb: `${DynamicData[webType].color.mainColorRGBA}` },
+      },
+      bottom: { style: "thick", color: { rgb: "000000" } },
+      left: {
+        style: "thick",
+        color: { rgb: `${DynamicData[webType].color.mainColorRGBA}` },
+      },
+      right: {
+        style: "thick",
+        color: { rgb: `${DynamicData[webType].color.mainColorRGBA}` },
+      },
+    },
+  };
 
-    const colomStyle =  {
-        alignment: {vertical: "center", horizontal: "center"}, 
-        font: {bold: true, color:{ rgb: "FFFFFF" }},
-        fill: {patternType: "solid", fgColor: {rgb: "#001529"}},
-        border : {
-            top : { style: "thick", color: { rgb: "000000" }},
-            bottom : { style: "thick", color: { rgb: "000000" }},
-            left : { style: "thick", color: { rgb: "000000" }},
-            right : { style: "thick", color: { rgb: "000000" }}
-        }
-    }
+  const rowStyle = {
+    alignment: { vertical: "center", horizontal: "center", wrapText: true },
+    border: {
+      top: { style: "medium", color: { rgb: "000000" } },
+      bottom: { style: "medium", color: { rgb: "000000" } },
+      left: { style: "medium", color: { rgb: "000000" } },
+      right: { style: "medium", color: { rgb: "000000" } },
+    },
+  };
 
-    const rowStyle = {
-        alignment: {vertical: "center", horizontal: "center"},
-        border : {
-            top : { style: "medium", color: { rgb: "000000" }},
-            bottom : { style: "medium", color: { rgb: "000000" }},
-            left : { style: "medium", color: { rgb: "000000" }},
-            right : { style: "medium", color: { rgb: "000000" }}
-        }
-    }
-
-    const customSheet = [
-        {
-            columns : [
-                {title : "No", style: colomStyle, width : {wch : 4}},
-                {title : "Kode Klasifikasi", style: colomStyle, width : {wch : 14}},
-                {title : "Indeks", style: colomStyle, width : {wch : 20}},
-                {title : "Hak Cipta", style: colomStyle, width : {wch : 15}},
-                {title : "Uraian Informasi", style: colomStyle, width : {wch : 50}},
-                {title : "Lokasi", style: colomStyle, width : {wch : 15}},
-                {title : "Tempat Simpan", style: colomStyle, width : {wch : 15}},
-                {title : "Waktu", style: colomStyle, width : {wch : 12}},
-                {title : "Ukuran ", style: colomStyle, width : {wch : 15}},
-                {title : "Kualitas", style: colomStyle, width : {wch : 7}},
-                {title : "Keterangan", style: colomStyle, width : {wch : 50}}
-            ],
-            data : ReorderObject.map(arsipObj => Object.values(arsipObj).map(v => ({value : v, style: rowStyle })))
-        }
-    ]
-    return (
-       
-        <ExcelFile 
-            element={
-                <Button
-                    style={{
-                        backgroundColor : '#001529',
-                        color: 'white',
-                        width : '100%',
-                        marginLeft : isMobileLandscape ? "-20px" : "0px",
-                        fontSize : isMobile || isMobileLandscape ? '8px' : '12px'
-                    }}
-                >
-                    Unduh Arsip
-                </Button>}
-            filename={`Arsip${fileName}`}
+  const customSheet = [
+    {
+      columns: DynamicData[webType].excelColumn(colomStyle),
+      data: ReorderObject.map((arsipObj) =>
+        Object.values(arsipObj).map((v) => ({ value: v, style: rowStyle }))
+      ),
+    },
+  ];
+  return (
+    <ExcelFile
+      element={
+        <Button
+          style={{
+            backgroundColor: `${DynamicData[webType].color.mainColor}`,
+            color: `${DynamicData[webType].color.thirdColor}`,
+            fontWeight: "700",
+            width: "100%",
+            marginLeft: isMobileLandscape ? "-20px" : "0px",
+            fontSize: isMobile || isMobileLandscape ? "8px" : "12px",
+          }}
         >
-            <ExcelSheet dataSet={customSheet} name="Organization"/>
-        </ExcelFile>
-    )
-}
+          Unduh Arsip
+        </Button>
+      }
+      filename={`Arsip - ${fileName}`}
+    >
+      <ExcelSheet dataSet={customSheet} name={fileName} />
+    </ExcelFile>
+  );
+};
 
-export default EcelExport
+export default EcelExport;

@@ -321,12 +321,14 @@ const Landing = ({ type }) => {
           </Card>
         </Col>
       </Row>
-      <Loading visible={loading} />
+      <Loading visible={loading} color={DynamicData[type].color.mainColor} />
       <ModalClick
         title={modal.title}
         image={modal.image}
         mainButton={modal.mainButton}
         visible={modal.visible}
+        mainColor={DynamicData[type].color.mainColor}
+        secondColor={DynamicData[type].color.thirdColor}
       />
     </div>
   );

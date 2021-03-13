@@ -1,24 +1,21 @@
-
-  
-  
 .ant-table-body {
-    margin-left: 0px
+  margin-left: 0px;
 }
 
 .ant-table-column-title span {
-    color : white;
-    background-color: green !important;
+  color: white;
+  background-color: green !important;
 }
 
 .arsip-table .ant-table-body {
-    margin : 0px !important
+  margin: 0px !important;
 }
 
 .arsip-table-mobile .ant-table-body {
-    margin : 0px !important
+  margin: 0px !important;
 }
 
-.arsip-table thead {
+/* .arsip-table thead {
     background-color: #001529;
     margin-left: 0px;
     color : white;
@@ -28,44 +25,79 @@
     background-color: #001529;
     margin-left: 0px;
     color : white; 
-}
+} */
 
 .arsip-table thead span {
-    color : white; 
-}   
+  color: white;
+}
 
 .arsip-table-mobile span {
-    color : white;
-    font-size: 9px
+  color: white;
+  font-size: 9px;
 }
 
 .arsip-table thead svg {
-    color : white;
-
+  color: white;
 }
 
 .arsip-table-mobile thead svg {
-    color : white;
-    font-size: 7px
-
+  color: white;
+  font-size: 7px;
 }
 
 .actionLogo {
-    margin-left: 15px;
-    color: #001529;
-    font-size: 20px;
+  margin-left: 15px;
+  font-size: 20px;
 }
 
 .actionLogo-mobile {
-    margin-left: 2px;
-    color: #001529;
-    font-size: 10px;
+  margin-left: 2px;
+  font-size: 10px;
 }
 
-.arsip-table td  {
-    font-size: 14px
+.arsip-table td {
+  font-size: 14px;
 }
 
-.arsip-table-mobile td  {
-    font-size: 9px
+.arsip-table-mobile td {
+  font-size: 9px;
+}
+
+#SIKAD thead {
+  background-color: #001529;
+  margin-left: 0px;
+  color: white;
+}
+#SIKAD thead span {
+  color: white;
+}
+#SIKAD thead svg {
+  color: white;
+}
+
+#SEKDA thead {
+  background-color: #bbbbbb;
+  margin-left: 0px;
+  color: #222222;
+}
+
+#SEKDA thead span {
+  color: #222222;
+}
+#SEKDA thead svg {
+  color: #222222;
+}
+
+#SIAKUM thead {
+  background-color: #2e856e;
+  margin-left: 0px;
+  color: white;
+}
+
+#SIAKUM thead span {
+  color: white;
+}
+
+#SIAKUM thead svg {
+  color: white;
 }
