@@ -78,12 +78,26 @@ const BasicLayout = ({ webType }) => {
                   <Route
                     path="/sikad/arsip"
                     exact
-                    render={(props) => <Arsip webType={"SIKAD"} {...props} />}
+                    render={(props) => (
+                      <Arsip
+                        webType={"SIKAD"}
+                        filtered={true}
+                        column={"column"}
+                        {...props}
+                      />
+                    )}
                   />
                   <Route
                     path="/sikad/arsip/:type"
                     exact
-                    render={(props) => <Arsip webType={"SIKAD"} {...props} />}
+                    render={(props) => (
+                      <Arsip
+                        webType={"SIKAD"}
+                        filtered={true}
+                        column={"column"}
+                        {...props}
+                      />
+                    )}
                   />
                   <Route
                     path="/sikad/tambah-data"
@@ -111,12 +125,26 @@ const BasicLayout = ({ webType }) => {
                   <Route
                     path="/sekda/arsip"
                     exact
-                    render={(props) => <Arsip webType={"SEKDA"} {...props} />}
+                    render={(props) => (
+                      <Arsip
+                        webType={"SEKDA"}
+                        filtered={true}
+                        column={"column"}
+                        {...props}
+                      />
+                    )}
                   />
                   <Route
                     path="/sekda/arsip/:type"
                     exact
-                    render={(props) => <Arsip webType={"SEKDA"} {...props} />}
+                    render={(props) => (
+                      <Arsip
+                        webType={"SEKDA"}
+                        filtered={true}
+                        column={"column"}
+                        {...props}
+                      />
+                    )}
                   />
                   <Route
                     path="/sekda/tambah-data"
@@ -146,12 +174,26 @@ const BasicLayout = ({ webType }) => {
                   <Route
                     path="/siakum/arsip"
                     exact
-                    render={(props) => <Arsip webType={"SIAKUM"} {...props} />}
+                    render={(props) => (
+                      <Arsip
+                        webType={"SIAKUM"}
+                        filtered={true}
+                        column={"column"}
+                        {...props}
+                      />
+                    )}
                   />
                   <Route
                     path="/siakum/arsip/:type"
                     exact
-                    render={(props) => <Arsip webType={"SIAKUM"} {...props} />}
+                    render={(props) => (
+                      <Arsip
+                        webType={"SIAKUM"}
+                        filtered={true}
+                        column={"column"}
+                        {...props}
+                      />
+                    )}
                   />
                   <Route
                     path="/siakum/tambah-data"
@@ -169,6 +211,68 @@ const BasicLayout = ({ webType }) => {
                         type={"edit"}
                         {...props}
                       />
+                    )}
+                  />
+
+                  {/* start taksi route */}
+                  <Route
+                    exact
+                    path="/taksi/"
+                    render={() => <Redirect to="/taksi/dashboard" />}
+                  />
+                  <Route
+                    path="/taksi/dashboard"
+                    exact
+                    render={() => <Dashboard webType={"TAKSI"} />}
+                  />
+                  <Route
+                    path="/taksi/arsip"
+                    exact
+                    render={(props) => (
+                      <Arsip
+                        webType={"TAKSI"}
+                        filtered={true}
+                        column={"column"}
+                        {...props}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/taksi/arsip/:type"
+                    exact
+                    render={(props) => (
+                      <Arsip
+                        webType={"TAKSI"}
+                        filtered={true}
+                        column={"column"}
+                        {...props}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/taksi/kode-klasifikasi"
+                    exact
+                    render={(props) => (
+                      <Arsip
+                        webType={"TAKSI"}
+                        filtered={false}
+                        column={"column2"}
+                        {...props}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/taksi/tambah-data"
+                    exact
+                    render={(props) => (
+                      <DynamicForm webType={"TAKSI"} type={"add"} {...props} />
+                    )}
+                  />
+                  <Route
+                    path="/taksi/ubah-data/:arsipId"
+                    exact
+                    render={(props) => (
+                      <DynamicForm webType={"TAKSI"} type={"edit"} {...props} />
                     )}
                   />
                 </Switch>

@@ -80,3 +80,30 @@
 #SIAKUM-sider .ant-menu-submenu-title a:hover {
   color: white;
 }
+
+/* taksi menu sider style */
+
+#TAKSI-sider {
+  background-color: #2e856e;
+}
+
+#TAKSI-sider .ant-menu-inline {
+  background-color: #2e856e;
+}
+
+#TAKSI-sider .ant-menu-sub {
+  background-color: #006a4e;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%) inset;
+}
+
+#TAKSI-sider .ant-menu-item-selected {
+  background-color: #1c5042;
+}
+
+#TAKSI-sider .ant-menu-submenu-title a {
+  color: white;
+}
+
+#TAKSI-sider .ant-menu-submenu-title a:hover {
+  color: white;
+}

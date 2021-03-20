@@ -28,7 +28,7 @@ import "./Arsip.css";
 const Arsip = (props) => {
   const isMobile = window.innerWidth <= 600;
   const isMobileLandscape = window.innerWidth <= 900;
-  const { match, webType } = props;
+  const { match, webType, filtered, column } = props;
   const { Search } = Input;
   const dispatch = useDispatch();
   const AllArsip = useSelector((state) => state.arsip.data);
@@ -115,11 +115,14 @@ const Arsip = (props) => {
         setData(AllArsip);
         setSearchData(AllArsip);
       } else {
-        let filterData = AllArsip.filter(
-          (data) =>
-            data.tipeArsip.toLowerCase() ==
-            match.params.type.split("-").join("")
-        );
+        let filterData = filtered
+          ? AllArsip.filter(
+              (data) =>
+                data.tipeArsip.toLowerCase() ==
+                match.params.type.split("-").join("")
+            )
+          : AllArsip;
+
         setData(filterData);
         setSearchData(filterData);
       }
@@ -130,7 +133,7 @@ const Arsip = (props) => {
 
   const GeneratePDF = (arsipData) => {
     setLoading(true);
-    pdf(<PdfTemplate data={arsipData} />)
+    pdf(<PdfTemplate data={arsipData} webType={webType} />)
       .toBlob()
       .then((finalPDFData) => {
         setLoading(false);
@@ -158,54 +161,63 @@ const Arsip = (props) => {
       });
   };
 
-  const columns = [
-    ...DynamicData[webType].column,
-    {
-      title: "Action",
-      key: "action",
-      align: "center",
-      width: "10%",
-      render: (text, record) => (
-        <span>
-          <span
-            onClick={() => {
-              GeneratePDF(record);
-            }}
-          >
-            <Icon
-              type="download"
-              className={isMobileLandscape ? "actionLogo-mobile" : "actionLogo"}
-              style={{ color: `${DynamicData[webType].color.mainColor}` }}
-            />
-          </span>
-          <Link
-            to={{
-              pathname: `/${DynamicData[webType].title}/ubah-data/${record.arsipId}`,
-            }}
-          >
-            <Icon
-              theme="filled"
-              type="edit"
-              className={isMobileLandscape ? "actionLogo-mobile" : "actionLogo"}
-              style={{ color: `${DynamicData[webType].color.mainColor}` }}
-            />
-          </Link>
-          <span
-            onClick={() => {
-              deleteConfirmation(record.arsipId, record.noDefinitif);
-            }}
-          >
-            <Icon
-              theme="filled"
-              type="delete"
-              className={isMobileLandscape ? "actionLogo-mobile" : "actionLogo"}
-              style={{ color: `${DynamicData[webType].color.mainColor}` }}
-            />
-          </span>
-        </span>
-      ),
-    },
-  ];
+  const columns =
+    column == "column"
+      ? [
+          ...DynamicData[webType].column,
+          {
+            title: "Action",
+            key: "action",
+            align: "center",
+            width: "10%",
+            render: (text, record) => (
+              <span>
+                <span
+                  onClick={() => {
+                    GeneratePDF(record);
+                  }}
+                >
+                  <Icon
+                    type="download"
+                    className={
+                      isMobileLandscape ? "actionLogo-mobile" : "actionLogo"
+                    }
+                    style={{ color: `${DynamicData[webType].color.mainColor}` }}
+                  />
+                </span>
+                <Link
+                  to={{
+                    pathname: `/${DynamicData[webType].title}/ubah-data/${record.arsipId}`,
+                  }}
+                >
+                  <Icon
+                    theme="filled"
+                    type="edit"
+                    className={
+                      isMobileLandscape ? "actionLogo-mobile" : "actionLogo"
+                    }
+                    style={{ color: `${DynamicData[webType].color.mainColor}` }}
+                  />
+                </Link>
+                <span
+                  onClick={() => {
+                    deleteConfirmation(record.arsipId, record.noDefinitif);
+                  }}
+                >
+                  <Icon
+                    theme="filled"
+                    type="delete"
+                    className={
+                      isMobileLandscape ? "actionLogo-mobile" : "actionLogo"
+                    }
+                    style={{ color: `${DynamicData[webType].color.mainColor}` }}
+                  />
+                </span>
+              </span>
+            ),
+          },
+        ]
+      : [...DynamicData[webType][column]];
 
   const closeModal = () => {
     setModal({

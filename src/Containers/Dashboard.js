@@ -19,6 +19,8 @@ const Dashboard = ({ webType }) => {
     dispatch.arsip.getAllArsip(webType);
   }, []);
 
+  console.log(AllArsip, "<<<<<<<<<<<<<<");
+
   return AllArsip !== null ? (
     <Row>
       {AllArsip.length == 0 ? (

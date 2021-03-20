@@ -151,7 +151,7 @@ const Landing = ({ type }) => {
               <Col span={7}>
                 <img
                   src={DynamicData[type].logo}
-                  width={type == "SIKAD" ? 70 : 100}
+                  width={DynamicData[type].logoWidthLogin}
                 />
               </Col>
               <Col span={17}>

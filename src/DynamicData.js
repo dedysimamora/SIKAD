@@ -7,6 +7,8 @@ DynamicData[Constant.SIKAD] = {
   subTitle:
     "Sistem Kearsipan Dinas Lingkungan Hidup Dan Kehutanan Provinsi Jawa Tengah",
   logo: "/images/logo-dinas.png",
+  logoWidthNavbar: 50,
+  logoWidthLogin: 80,
   tableSearchKey: "uraianInformasi",
   color: {
     mainColor: "#001529",
@@ -14,6 +16,11 @@ DynamicData[Constant.SIKAD] = {
     secondColor: "#000C17",
     thirdColor: "#FFFFFF",
     thirdColorRGBA: "FFFFFFFF",
+    pdfColor: {
+      main: "#001529",
+      second: "#189AD3",
+      third: "#FFFFFF",
+    },
     chartColor: [
       "#001529",
       "#01264a",
@@ -161,6 +168,8 @@ DynamicData[Constant.SEKDA] = {
   title: "sekda",
   subTitle: "Sistem Kearsipan Dinas Arsip dan Perpustakaan Kota Semarang",
   logo: "/images/semarang.png",
+  logoWidthNavbar: 80,
+  logoWidthLogin: 120,
   tableSearchKey: "uraianInformasi",
   color: {
     mainColor: "#BBBBBB",
@@ -168,6 +177,11 @@ DynamicData[Constant.SEKDA] = {
     secondColor: "#AAAAAA",
     thirdColor: "#222222",
     thirdColorRGBA: "FF222222",
+    pdfColor: {
+      main: "#222222",
+      second: "#777777",
+      third: "#FFFFFF",
+    },
     chartColor: [
       "#3D3D3D",
       "#5C5C5C",
@@ -384,6 +398,8 @@ DynamicData[Constant.SIAKUM] = {
   title: "siakum",
   subTitle: "Sistem Arsip Dinas Koperasi dan Usaha Mikro",
   logo: "/images/semarang.png",
+  logoWidthNavbar: 70,
+  logoWidthLogin: 120,
   tableSearchKey: "keterangan",
   color: {
     mainColor: "#2E856E",
@@ -391,6 +407,11 @@ DynamicData[Constant.SIAKUM] = {
     secondColor: "#006A4E",
     thirdColor: "#FFFFFF",
     thirdColorRGBA: "FFFFFFFF",
+    pdfColor: {
+      main: "#2E856E",
+      second: "#006A4E",
+      third: "#FFFFFF",
+    },
     chartColor: [
       "#006A4E",
       "#61B567",
@@ -580,6 +601,235 @@ DynamicData[Constant.SIAKUM] = {
       title: "Keterangan / Bidang",
       placeHolder: "Masukkan Keterangan / Bidang",
       variableName: "keterangan",
+      type: "textArea",
+      maxLength: 100,
+      required: true,
+      spanSize: 24,
+    },
+  ],
+};
+
+DynamicData[Constant.TAKSI] = {
+  title: "taksi",
+  subTitle:
+    "Temu Balik Arsip Inaktif Dinas Kearsipan dan Perpustakaan Kabupaten Bekasi",
+  logo: "/images/bekasi.png",
+  logoWidthNavbar: 50,
+  logoWidthLogin: 80,
+  tableSearchKey: "uraianInformasi",
+  color: {
+    mainColor: "#2E856E",
+    mainColorRGBA: "FF2E856E",
+    secondColor: "#006A4E",
+    thirdColor: "#FFFFFF",
+    thirdColorRGBA: "FFFFFFFF",
+    pdfColor: {
+      main: "#2E856E",
+      second: "#006A4E",
+      third: "#FFFFFF",
+    },
+    chartColor: [
+      "#006A4E",
+      "#61B567",
+      "#2E856E",
+      "#5CA08E",
+      "#8ABAAE",
+      "#B8D5CD",
+    ],
+  },
+  menu: [
+    {
+      title: "Menu Utama",
+      pathName: "/taksi/dashboard",
+      icon: "bar-chart",
+      childMenu: [],
+    },
+    {
+      title: "Arsip",
+      pathName: "/taksi/arsip",
+      icon: "database",
+      childMenu: [
+        {
+          title: "Arsip Inaktif",
+          pathName: "/taksi/arsip/arsip-inaktif",
+          icon: "file-text",
+          childMenu: [],
+        },
+        // {
+        //   title: "Surat Keluar",
+        //   pathName: "/taksi/arsip/surat-keluar",
+        //   icon: "file-text",
+        //   childMenu: [],
+        // },
+      ],
+    },
+    {
+      title: "Kode Klasifikasi",
+      pathName: "/taksi/kode-klasifikasi",
+      icon: "ordered-list",
+      childMenu: [],
+    },
+    {
+      title: "Tambah Data",
+      pathName: "/taksi/tambah-data",
+      icon: "file-add",
+      childMenu: [],
+    },
+  ],
+  column: [
+    {
+      title: "No",
+      dataIndex: "noDefinitif",
+      align: "center",
+      sorter: (a, b) => a.noDefinitif - b.noDefinitif,
+      width: "5%",
+    },
+    {
+      title: "Indeks",
+      dataIndex: "indeks",
+      align: "center",
+      width: "5%",
+    },
+    {
+      title: "Kode Klasifikasi",
+      dataIndex: "kodeKlasifikasi",
+      align: "center",
+      sorter: (a, b) => a.kodeKlasifikasi - b.kodeKlasifikasi,
+      width: "7%",
+    },
+    {
+      title: "Jumlah",
+      dataIndex: "jumlah",
+      align: "center",
+      width: "7%",
+    },
+    {
+      title: "Tingkat Perkembangan",
+      dataIndex: "tingkatPerkembangan",
+      align: "center",
+      width: "10%",
+    },
+    {
+      title: "Lokasi Simpan",
+      dataIndex: "lokasiSimpan",
+      align: "center",
+      width: "10%",
+    },
+    {
+      title: "Uraian Informasi",
+      dataIndex: "uraianInformasi",
+      align: "center",
+      width: "15%",
+    },
+  ],
+  column2: [
+    {
+      title: "Indeks",
+      dataIndex: "indeks",
+      align: "center",
+      width: "20%",
+    },
+    {
+      title: "Kode Klasifikasi",
+      dataIndex: "kodeKlasifikasi",
+      align: "center",
+      sorter: (a, b) => a.kodeKlasifikasi - b.kodeKlasifikasi,
+      width: "30%",
+    },
+  ],
+  generateExcelData: (data) => {
+    return data.map((e) => ({
+      No: e.noDefinitif,
+      indeks: e.indeks,
+      "Kode Klasifikasi": e.kodeKlasifikasi,
+      Jumlah: e.jumlah,
+      "Tingkat Perkembangan,": e.tingkatPerkembangan,
+      "Lokasi Simpan": e.lokasiSimpan,
+      "Uraian Informasi": e.uraianInformasi,
+    }));
+  },
+  excelColumn: (colomStyle) => {
+    return [
+      { title: "No", style: colomStyle, width: { wch: 5 } },
+      { title: "Indeks", style: colomStyle, width: { wch: 10 } },
+      { title: "Kode Klasifikasi", style: colomStyle, width: { wch: 15 } },
+      { title: "Jumlah", style: colomStyle, width: { wch: 15 } },
+      { title: "Tingkat Perkembangan", style: colomStyle, width: { wch: 20 } },
+      { title: "Lokasi Simpan", style: colomStyle, width: { wch: 20 } },
+      { title: "Uraian Informasi", style: colomStyle, width: { wch: 50 } },
+    ];
+  },
+  dataInputObject: [
+    {
+      title: "Kode Klasifikasi",
+      placeHolder: "Masukkan Kode Klasifikasi",
+      variableName: "kodeKlasifikasi",
+      type: "number",
+      maxLength: 5,
+      required: true,
+      spanSize: 12,
+    },
+
+    {
+      title: "Indeks",
+      placeHolder: "Masukkan Indeks",
+      variableName: "indeks",
+      type: "number",
+      maxLength: 3,
+      required: true,
+      spanSize: 12,
+    },
+
+    {
+      title: "Tingkat Perkembangan",
+      placeHolder: "Masukkan Tingkat Perkembangan",
+      variableName: "tingkatPerkembangan",
+      type: "text",
+      maxLength: 15,
+      required: true,
+      spanSize: 12,
+    },
+    {
+      title: "Jumlah",
+      placeHolder: "Masukkan Jumlah",
+      variableName: "jumlah",
+      type: "text",
+      maxLength: 15,
+      required: true,
+      spanSize: 12,
+    },
+    {
+      title: "Tipe Arsip",
+      placeHolder: "Pilih Tipe Arsip",
+      variableName: "tipeArsip",
+      type: "select",
+      maxLength: 20,
+      required: true,
+      spanSize: 24,
+      suggestion: [
+        {
+          value: "arsipInaktif",
+          label: "Arsip Inaktif",
+        },
+        // {
+        //   value: "suratKeluar",
+        //   label: "SuratKeluar",
+        // },
+      ],
+    },
+    {
+      title: "Lokasi Simpan",
+      placeHolder: "Masukkan Lokasi Simpan",
+      variableName: "lokasiSimpan",
+      type: "textArea",
+      maxLength: 50,
+      required: true,
+      spanSize: 24,
+    },
+    {
+      title: "Uraian Informasi",
+      placeHolder: "Masukkan Uraian Informasi",
+      variableName: "uraianInformasi",
       type: "textArea",
       maxLength: 100,
       required: true,

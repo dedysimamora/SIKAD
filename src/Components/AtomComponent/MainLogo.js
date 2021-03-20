@@ -13,7 +13,7 @@ const MainLogo = (props) => {
           <Col span={6}>
             <img
               src={DynamicData[webType].logo}
-              width={webType == "SIKAD" ? 50 : 65}
+              width={DynamicData[webType].logoWidthNavbar}
               className={"MainLogoImage"}
               alt={webType}
             />

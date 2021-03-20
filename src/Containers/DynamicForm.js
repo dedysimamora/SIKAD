@@ -213,18 +213,25 @@ const DynamicForm = (props) => {
             suggestion={objectData.suggestion}
             onSelect={(e) => {
               if (objectData.variableName == "tipeArsip") {
-                console.log(AllArsip, "<<<<<<<<<<<<<< ini all arsip");
-                let arrOfNumber = AllArsip.map((data) => {
-                  if (data.tipeArsip == e) {
-                    return data.noDefinitif;
+                if (AllArsip == null) {
+                  window.location.href = `/${DynamicData[webType].title}/dashboard/`;
+                } else {
+                  if (AllArsip.length !== 0) {
+                    let arrOfNumber = AllArsip.map((data) => {
+                      if (data.tipeArsip == e) {
+                        return data.noDefinitif;
+                      } else {
+                        return 0;
+                      }
+                    });
+                    formik.setFieldValue(
+                      "noDefinitif",
+                      Math.max(...arrOfNumber) + 1
+                    );
                   } else {
-                    return 0;
+                    formik.setFieldValue("noDefinitif", 1);
                   }
-                });
-                formik.setFieldValue(
-                  "noDefinitif",
-                  Math.max(...arrOfNumber) + 1
-                );
+                }
               }
 
               formik.setFieldValue(`${objectData.variableName}`, e);

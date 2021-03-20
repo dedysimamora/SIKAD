@@ -101,3 +101,17 @@
 #SIAKUM thead svg {
   color: white;
 }
+
+#TAKSI thead {
+  background-color: #2e856e;
+  margin-left: 0px;
+  color: white;
+}
+
+#TAKSI thead span {
+  color: white;
+}
+
+#TAKSI thead svg {
+  color: white;
+}

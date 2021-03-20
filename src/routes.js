@@ -33,6 +33,11 @@ const Router = () => (
           path="/siakum-login"
           render={() => <Landing type={"SIAKUM"} />}
         />
+        <Route
+          exact
+          path="/taksi-login"
+          render={() => <Landing type={"TAKSI"} />}
+        />
         <PrivateRoute
           path="/sikad"
           // render={() => <BasicLayouts type={"SIKAD"} />}
@@ -53,6 +58,13 @@ const Router = () => (
           component={BasicLayouts}
           reroute={"/siakum-login"}
           webType={"SIAKUM"}
+        />
+        <PrivateRoute
+          path="/taksi"
+          // render={() => <BasicLayouts type={"SIAKUM"} />}
+          component={BasicLayouts}
+          reroute={"/taksi-login"}
+          webType={"TAKSI"}
         />
         {/* <PrivateRoute path="/sikad" component={BasicLayouts} /> */}
       </Switch>

@@ -13,9 +13,10 @@ import SampleImage from "../Assets/Images/sample.jpg";
 import PdfBackground from "../Assets/Images/pdfBackground.png";
 import PoppinsBold from "../Assets/Font/Poppins-Bold.ttf";
 import PoppinsMedium from "../Assets/Font/Poppins-Medium.ttf";
+import DynamicData from "../DynamicData";
 
 const PdfTemplate = (props) => {
-  const { data } = props;
+  const { data, webType } = props;
   const [imageData, SetImageData] = useState(null);
 
   Font.register({
@@ -27,32 +28,61 @@ const PdfTemplate = (props) => {
     <Document>
       <Page
         size="A4"
-        style={{ flexDirection: "column", backgroundColor: "#ffffff" }}
+        style={{ flexDirection: "column", backgroundColor: "#EEEEEE" }}
       >
         <View
           style={{
             display: "flex",
-            flexDirection: "row",
+            flexDirection: "column",
             justifyContent: "center",
-            height: 450,
             alignItems: "center",
+            height: 445,
+            backgroundColor: "#EEEEEE",
           }}
         >
-          <Image
-            style={{ width: "85%", position: "absolute" }}
-            src={data.foto !== null ? data.foto : ""}
-          />
+          <View
+            style={{
+              width: "70%",
+              height: "60%",
+              backgroundColor: "white",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {data.foto ? (
+              <View>
+                <Image
+                  style={{ width: "85%", position: "absolute" }}
+                  src={data.foto !== null ? data.foto : ""}
+                />
+              </View>
+            ) : (
+              <View>
+                <Text
+                  style={{
+                    fontSize: 7,
+                    fontFamily: "Poppins",
+                    fontStyle: "thin",
+                    color: "#001529",
+                  }}
+                >
+                  No Picture
+                </Text>
+              </View>
+            )}
+          </View>
         </View>
-        <Image
+        {/* <Image
           style={{ width: "100%", height: "100%", position: "absolute" }}
           src={PdfBackground}
-        />
+        /> */}
         <View style={{}}>
           <Text
             style={{
               fontSize: 40,
               fontFamily: "Poppins",
-              color: "#001529",
+              color: `${DynamicData[webType].color.pdfColor.main}`,
               marginLeft: 120,
               marginTop: -20,
             }}
@@ -64,7 +94,7 @@ const PdfTemplate = (props) => {
         <View
           style={{
             height: 4,
-            backgroundColor: "#001529",
+            backgroundColor: `${DynamicData[webType].color.pdfColor.main}`,
             marginLeft: 120,
             marginRight: 200,
           }}
@@ -73,371 +103,72 @@ const PdfTemplate = (props) => {
         <View
           style={{
             display: "flex",
-            flexDirection: "column",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
             marginLeft: 120,
-            marginTop: 20,
           }}
         >
-          <View style={{ display: "flex", flexDirection: "row" }}>
+          {DynamicData[webType].column.map((e) => (
             <View
               style={{
                 display: "flex",
                 justifyContent: "center",
-                width: "25%",
-                marginLeft: 25,
+                width: "45%",
                 flexDirection: "column",
+                marginTop: 20,
               }}
             >
               <Text
                 style={{
-                  fontSize: 7,
+                  fontSize: 9,
                   fontFamily: "Poppins",
                   fontStyle: "thin",
-                  color: "#001529",
+                  color: `${DynamicData[webType].color.pdfColor.main}`,
                 }}
               >
-                Nomor Definitif :{" "}
+                {e.title}
               </Text>
               <Text
                 style={{
-                  fontSize: 30,
+                  fontSize: data[e.dataIndex].length > 20 ? 10 : 20,
                   fontFamily: "Poppins",
-                  color: "#1A74BC",
-                  marginTop: -5,
+                  color: `${DynamicData[webType].color.pdfColor.second}`,
                 }}
               >
-                {data.noDefinitif}
-              </Text>
-            </View>
-            <View
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                width: "25%",
-                flexDirection: "column",
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 7,
-                  fontFamily: "Poppins",
-                  fontStyle: "thin",
-                  color: "#001529",
-                }}
-              >
-                Nomor Klasifikasi :{" "}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 30,
-                  fontFamily: "Poppins",
-                  color: "#1A74BC",
-                  marginTop: -5,
-                }}
-              >
-                {data.noKlasifikasi}
+                {data[e.dataIndex]}
               </Text>
             </View>
-            <View
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                width: "40%",
-                flexDirection: "column",
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 7,
-                  fontFamily: "Poppins",
-                  fontStyle: "thin",
-                  color: "#001529",
-                }}
-              >
-                Tanggal Simpan :{" "}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 30,
-                  fontFamily: "Poppins",
-                  color: "#1A74BC",
-                  marginTop: -5,
-                }}
-              >
-                {data.tanggalSimpan}
-              </Text>
-            </View>
-          </View>
-
-          <View
-            style={{ display: "flex", flexDirection: "row", marginTop: 20 }}
-          >
-            <View
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                width: "25%",
-                marginLeft: 25,
-                flexDirection: "column",
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 7,
-                  fontFamily: "Poppins",
-                  fontStyle: "thin",
-                  color: "#001529",
-                }}
-              >
-                Kualitas Foto:{" "}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 25,
-                  fontFamily: "Poppins",
-                  color: "#1A74BC",
-                  marginTop: -5,
-                }}
-              >
-                {data.kualitasFoto ? "Baik" : "Buruk"}
-              </Text>
-            </View>
-            <View
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                width: "25%",
-                flexDirection: "column",
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 7,
-                  fontFamily: "Poppins",
-                  fontStyle: "thin",
-                  color: "#001529",
-                }}
-              >
-                Ukuran Foto :{" "}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 20,
-                  fontFamily: "Poppins",
-                  color: "#1A74BC",
-                  marginTop: -5,
-                }}
-              >{`${data.panjangFoto} X ${data.lebarFoto} Cm`}</Text>
-            </View>
-
-            <View
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                width: "50%",
-                flexDirection: "column",
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 7,
-                  fontFamily: "Poppins",
-                  fontStyle: "thin",
-                  color: "#001529",
-                }}
-              >
-                Tempat Simpan :{" "}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 20,
-                  fontFamily: "Poppins",
-                  color: "#1A74BC",
-                  marginTop: -5,
-                }}
-              >
-                {data.tempatSimpan}
-              </Text>
-            </View>
-          </View>
-
-          <View
-            style={{ display: "flex", flexDirection: "row", marginTop: 20 }}
-          >
-            <View
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                width: "25%",
-                marginLeft: 25,
-                flexDirection: "column",
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 7,
-                  fontFamily: "Poppins",
-                  fontStyle: "thin",
-                  color: "#001529",
-                }}
-              >
-                Hak Cipta :{" "}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 20,
-                  fontFamily: "Poppins",
-                  color: "#1A74BC",
-                  marginTop: -5,
-                }}
-              >
-                {data.hakCipta}
-              </Text>
-            </View>
-            <View
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                width: "25%",
-                flexDirection: "column",
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 7,
-                  fontFamily: "Poppins",
-                  fontStyle: "thin",
-                  color: "#001529",
-                }}
-              >
-                Lokasi Tempat :{" "}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 20,
-                  fontFamily: "Poppins",
-                  color: "#1A74BC",
-                  marginTop: -5,
-                }}
-              >
-                {data.lokasiTempat}
-              </Text>
-            </View>
-            <View
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                width: "40%",
-                flexDirection: "column",
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 7,
-                  fontFamily: "Poppins",
-                  fontStyle: "thin",
-                  color: "#001529",
-                }}
-              >
-                Indeks :{" "}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 20,
-                  fontFamily: "Poppins",
-                  color: "#1A74BC",
-                  marginTop: -5,
-                }}
-              >
-                {data.indeks}
-              </Text>
-            </View>
-          </View>
-
-          <View
-            style={{ display: "flex", flexDirection: "row", marginTop: 10 }}
-          >
-            <View
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                width: "90%",
-                marginLeft: 25,
-                flexDirection: "column",
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 7,
-                  fontFamily: "Poppins",
-                  fontStyle: "thin",
-                  color: "#001529",
-                }}
-              >
-                Keterangan :{" "}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 12,
-                  fontFamily: "Poppins",
-                  color: "#1A74BC",
-                  marginTop: -5,
-                }}
-              >
-                {data.keterangan}
-              </Text>
-            </View>
-          </View>
-
-          <View
-            style={{ display: "flex", flexDirection: "row", marginTop: 10 }}
-          >
-            <View
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                width: "90%",
-                marginLeft: 25,
-                flexDirection: "column",
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 7,
-                  fontFamily: "Poppins",
-                  fontStyle: "thin",
-                  color: "#001529",
-                }}
-              >
-                Uraian Informasi :{" "}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 12,
-                  fontFamily: "Poppins",
-                  color: "#1A74BC",
-                  marginTop: -5,
-                }}
-              >
-                {data.uraianInformasi}
-              </Text>
-            </View>
-          </View>
+          ))}
         </View>
 
         <View
           style={{
             position: "absolute",
-            bottom: 7,
+            alignItems: "center",
+            backgroundColor: `${DynamicData[webType].color.pdfColor.main}`,
+            height: "400ppx",
+            width: "17%",
+            bottom: 0,
+            left: 0,
+          }}
+        ></View>
+
+        <View
+          style={{
+            position: "absolute",
             width: "100%",
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: `${DynamicData[webType].color.pdfColor.second}`,
+            height: "23px",
+            bottom: 0,
           }}
         >
           <Text style={{ fontSize: 9, color: "white" }}>
-            Dokumen ini dibuat seacara otomatis oleh Sistem Kearsipan Dinas
-            Lingkungan Hidup Dan Kehutanan Provinsi Jawa Tengah{" "}
+            {`Dokumen ini dibuat seacara otomatis oleh ${DynamicData[webType].subTitle}`}
           </Text>
         </View>
 

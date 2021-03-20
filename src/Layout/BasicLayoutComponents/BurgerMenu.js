@@ -10,9 +10,6 @@ const { SubMenu } = Menu;
 const BurgerMenu = (props) => {
   const { collapsed, webType } = props;
   const { pathname } = useLocation();
-
-  console.log(DynamicData[webType].menu, "<<<<<<<<<< wakidaw");
-  // console.log(DynamicData[webType].menu, "<<<<<<<<<<, wakida");
   return (
     <Sider
       id={`${webType}-sider`}
