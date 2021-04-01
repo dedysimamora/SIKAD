@@ -248,7 +248,10 @@ const Arsip = (props) => {
             xs={{ span: 12, offset: data.length == 0 ? 12 : 0 }}
           >
             <Input
-              placeholder="cari arsip"
+              placeholder={`Cari Arsip (${DynamicData[webType].tableSearchKey
+                .replace(/([A-Z])/g, " $1")
+                .trim()
+                .toLowerCase()})`}
               suffix={
                 <Tooltip title="Extra information">
                   <SearchOutlined style={{ color: "rgba(0,0,0,.45)" }} />

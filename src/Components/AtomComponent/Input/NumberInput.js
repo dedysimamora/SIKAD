@@ -38,10 +38,6 @@ const NumberInput = (props) => {
           onFocus={onFocus}
           className={`ant-input input-number ${customClassName}`}
           style={{ paddingRight: "0px" }}
-          options={{
-            numeral: true,
-            delimiter: ".",
-          }}
         />
       </Input.Group>
     </Form.Item>

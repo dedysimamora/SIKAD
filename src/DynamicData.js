@@ -400,7 +400,7 @@ DynamicData[Constant.SIAKUM] = {
   logo: "/images/semarang.png",
   logoWidthNavbar: 70,
   logoWidthLogin: 120,
-  tableSearchKey: "keterangan",
+  tableSearchKey: "noSurat",
   color: {
     mainColor: "#2E856E",
     mainColorRGBA: "FF2E856E",
