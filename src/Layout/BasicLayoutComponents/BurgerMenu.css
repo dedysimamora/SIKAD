@@ -42,6 +42,11 @@
   box-shadow: 0 2px 8px rgb(0 0 0 / 15%) inset;
 }
 
+#SEKDA-sider .ant-menu-inline-collapsed {
+  margin-top: 10px;
+  background-color: #aaaaaa;
+}
+
 #SEKDA-sider .ant-menu-item-selected {
   background-color: #666666;
 }
@@ -69,6 +74,11 @@
   box-shadow: 0 2px 8px rgb(0 0 0 / 15%) inset;
 }
 
+#SIAKUM-sider .ant-menu-inline-collapsed {
+  margin-top: 10px;
+  background-color: #006a4e;
+}
+
 #SIAKUM-sider .ant-menu-item-selected {
   background-color: #1c5042;
 }
@@ -94,6 +104,10 @@
 #TAKSI-sider .ant-menu-sub {
   background-color: #006a4e;
   box-shadow: 0 2px 8px rgb(0 0 0 / 15%) inset;
+}
+#TAKSI-sider .ant-menu-inline-collapsed {
+  margin-top: 10px;
+  background-color: #006a4e;
 }
 
 #TAKSI-sider .ant-menu-item-selected {
